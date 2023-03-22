@@ -1,15 +1,8 @@
-.line {
-  position: absolute;
-  top: 61px;
-  width: 100%;
-  height: 1px;
-  opacity: 0.2;
-  border-bottom: 1px solid #3f4e65;
-}
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
 
 h3 {
-  font-weight: 600;
-  font-size: 14px;
+  @include font-regular-h3;
   margin: 0;
 }
 
@@ -18,39 +11,39 @@ p {
   font-size: 12px;
   margin: 0;
 }
-
-button {
-  background: #ffc85e;
-  border-radius: 79px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #ffffff;
-  border: 0;
-  box-sizing: border-box;
-  text-align: left;
-}
-
-.container {
-  width: 1366px;
-  margin: 0 auto;
-  font-family: "Inter";
+.top_row_menu {
   position: relative;
-
-  .top_row_menu {
+  @include mobile_320 {
+    position: absolute;
+    top: 90px;
+  }
+  .container {
+    @include container;
     height: 61px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 0 13px 0;
     box-sizing: border-box;
+    @include mobile_320 {
+      width: 290px;
+      flex-direction: column;
+      display: none;
+    }
 
     .data_company {
       display: flex;
       flex-direction: row;
       margin-top: 8px;
+      @include mobile_320 {
+        flex-direction: column;
+        border-bottom: 1px dashed rgb(63, 78, 101, 0.2);
+      }
 
       .adress,
-      .mail {
+      .mail,
+      .sales_department,
+      .request_a_call {
         display: flex;
         flex-direction: row;
 
@@ -78,24 +71,68 @@ button {
         position: relative;
         img {
         }
-        &::after {
-          position: relative;
-          content: "";
-          top: -4px;
-          right: -23px;
-          height: 39px;
-          width: 0px;
-          opacity: 0.05;
-          border: 1px dashed #000000;
+        @include screen {
+          &::after {
+            position: relative;
+            content: "";
+            top: -4px;
+            right: -23px;
+            height: 39px;
+            width: 0px;
+            opacity: 0.05;
+            border: 1px dashed #000000;
+          }
         }
       }
       .mail {
         margin-top: -0.5px;
         margin-left: 42px;
+        @include mobile_320 {
+          margin-left: 0;
+        }
         img {
         }
       }
+
+      .sales_department {
+        display: none;
+        @include mobile_320 {
+          margin-top: 5px;
+          display: flex;
+        }
+      }
+
+      .request_a_call {
+        display: none;
+        @include mobile_320 {
+          display: flex;
+          margin-top: 5px;
+          margin-bottom: 10px;
+          .call_button {
+            @include yellow-button;
+            width: 30px;
+            height: 30px;
+            margin-right: 7px;
+            position: relative;
+            &:after {
+              position: absolute;
+              content: "";
+              width: 10px;
+              height: 10px;
+              top: 10px;
+              left: 10px;
+              background-image: url("../../images/icons/phone-button-mobile.png");
+            }
+          }
+          a {
+            @include font-p-mobile;
+            color: #3f4e65;
+            margin-top: 5px;
+          }
+        }
+      }
     }
+
     .links_to_pages {
       width: 512px;
       height: 29px;
@@ -124,29 +161,86 @@ button {
       }
     }
   }
+}
 
-  .main_row_menu {
+.main_row_menu {
+  margin: 0 auto;
+  border-top: 1px solid rgb(63, 78, 101, 0.2);
+  border-bottom: 1px solid rgb(63, 78, 101, 0.2);
+
+  .container {
+    @include container;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 96px;
     flex-direction: row;
-    margin-top: 6px;
-    margin-left: 3px;
+    @include mobile_320 {
+      width: 290px;
+      display: grid;
+      grid-template-areas:
+        "burger-menu logo basket"
+        "catalog search";
 
-    .logo_and_catalog {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .burger_menu_mobile {
+      display: none;
+      @include mobile_320 {
+        @include yellow-button;
+        display: block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        grid-area: burger-menu;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        &::after {
+          position: absolute;
+          content: "";
+          top: 10px;
+          left: 10px;
+          width: 12px;
+          height: 12px;
+          background-image: url("../../images/icons/burger-menu-mobile.png");
+          background-size: cover;
+        }
+      }
+    }
 
+    .logo {
+      @include mobile_320 {
+        grid-area: logo;
+        grid-row-start: 1;
+        grid-row-end: 6;
+        grid-column-start: 3;
+        grid-column-end: 6;
+      }
       img {
         width: 156px;
         height: 66px;
         background-size: cover;
         margin-right: 38px;
+        @include mobile_320 {
+          width: 97px;
+          height: 41px;
+        }
       }
-
+    }
+    .catalog {
+      @include mobile_320 {
+        grid-area: catalog;
+        grid-row-start: 6;
+        grid-row-end: 8;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        width: 140px;
+      }
       button {
+        @include yellow-button;
         width: 192px;
         height: 59px;
         position: relative;
@@ -162,11 +256,36 @@ button {
           height: 15px;
           background-image: url("../../images/icons/burger_menu.png");
         }
+        @include mobile_320 {
+          @include mobile-button;
+          width: 140px;
+          height: 40px;
+          padding: 13px 53px;
+
+          &::after {
+            top: 13px;
+            right: 120px;
+            width: 15px;
+            height: 15px;
+            background-image: url("../../images/icons/catalog-mobile.png");
+          }
+        }
       }
     }
 
     .search {
       margin-left: 15px;
+
+      @include mobile_320 {
+        grid-area: search;
+        grid-row-start: 6;
+        grid-row-end: 8;
+        grid-column-start: 4;
+        grid-column-end: 8;
+        width: 140px;
+        margin-left: 0;
+      }
+
       input {
         width: 263px;
         height: 59px;
@@ -178,9 +297,13 @@ button {
         letter-spacing: 0.035em;
         padding: 21px 20px;
         box-sizing: border-box;
+        @include mobile_320 {
+          display: none;
+        }
       }
 
       .search_button {
+        @include yellow-button;
         width: 39px;
         height: 39px;
         position: relative;
@@ -195,10 +318,40 @@ button {
           left: 11.47px;
           background-image: url("../../images/icons/icons_search.png");
         }
+        @include mobile_320 {
+          display: none;
+        }
+      }
+      .search_button_mobile {
+        display: none;
+        @include mobile_320 {
+          display: block;
+          position: relative;
+          @include mobile-button;
+          width: 140px;
+          height: 40px;
+          top: 0;
+          right: 0;
+
+          @include font-p-mobile;
+          padding: 13px 53px;
+          &:after {
+            position: absolute;
+            content: "";
+            width: 15px;
+            height: 15px;
+            top: 11.47px;
+            left: 20px;
+            background-image: url("../../images/icons/search-mobile.png");
+          }
+        }
       }
     }
 
     .contacts {
+      @include mobile_320 {
+        display: none;
+      }
       width: 236px;
       height: 92px;
       display: flex;
@@ -245,6 +398,9 @@ button {
     }
 
     .price_list {
+      @include mobile_320 {
+        display: none;
+      }
       margin-left: 46px;
       position: relative;
       &::after {
@@ -259,6 +415,7 @@ button {
       }
 
       .price_list_button {
+        @include yellow-button;
         width: 200px;
         height: 59px;
         position: relative;
@@ -286,6 +443,16 @@ button {
       align-items: center;
       justify-content: space-between;
       position: relative;
+      @include mobile_320 {
+        grid-area: basket;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        margin-left: 0;
+        width: 32px;
+        height: 30px;
+      }
       .basket {
         margin-top: 5px;
 
@@ -293,6 +460,10 @@ button {
           width: 46px;
           height: 46px;
           background-size: cover;
+          @include mobile_320 {
+            width: 25px;
+            height: 25px;
+          }
         }
 
         span {
@@ -309,9 +480,20 @@ button {
           border: 2px solid rgb(255, 255, 255);
           padding: 2px;
           box-sizing: border-box;
+          @include mobile_320 {
+            width: 17px;
+            height: 17px;
+            @include font-p-mobile;
+            top: -2px;
+            left: 15px;
+            padding: 0px;
+          }
         }
       }
       .info {
+        @include mobile_320 {
+          display: none;
+        }
         margin-top: -2px;
 
         p {

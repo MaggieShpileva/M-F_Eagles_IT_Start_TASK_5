@@ -1,0 +1,144 @@
+@import "./colors.scss";
+
+@mixin font-regular {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin font-h2-mobile-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@mixin font-h1-mobile-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+}
+@mixin font-h2-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 77px;
+  color: #ffffff;
+}
+
+@mixin font-p-screen-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+@mixin font-p-footer-screen-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+@mixin font-p-mobile-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ffffff;
+}
+@mixin font-h6-mobile-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+@mixin font-h6-white {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 45px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+@mixin font-p-mobile {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14.52px;
+}
+
+@mixin font-regular-h3 {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@mixin yellow-button {
+  background: #ffc85e;
+  border-radius: 79px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  border: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+@mixin font-p-mobile {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+@mixin container {
+  width: 1366px;
+  margin: 0 auto;
+}
+
+@mixin container_mobile {
+  width: 290px;
+  margin: 0 auto;
+}
+@mixin screen {
+  @media screen and (min-width: 321px) {
+    @content;
+  }
+}
+@mixin mobile_320 {
+  @media screen and (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin mobile-button {
+  background: transparent;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 12px;
+  color: #3f4e65;
+  border: 0;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 12px;
+}

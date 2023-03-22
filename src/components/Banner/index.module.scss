@@ -1,0 +1,132 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+
+.banner_foto {
+  width: 1920px;
+  height: 796px;
+  margin: 0 auto;
+  position: relative;
+  background-image: url("../../images/banner-phono-full.png");
+  @include mobile_320 {
+    width: 320px;
+    height: 210px;
+    position: relative;
+    background-image: url("../../images/banner_image.png");
+  }
+
+  .banner_title {
+    width: 921px;
+    height: 796px;
+    position: relative;
+    background: linear-gradient(
+      89.86deg,
+      #8a94ab 0.13%,
+      rgba(138, 148, 171, 0) 99.89%
+    );
+    backdrop-filter: blur(6.5px);
+    padding: 98px 79px 90px 272px;
+    box-sizing: border-box;
+    @include mobile_320 {
+      width: 290px;
+      height: 99px;
+      top: 56px;
+      left: 15px;
+      padding: 2px 0;
+      background: linear-gradient(
+        89.86deg,
+        #8a94ab 0.13%,
+        rgba(138, 148, 171, 0) 99.89%
+      );
+      backdrop-filter: blur(4.5px);
+    }
+    h2 {
+      @include font-h2-white;
+      text-align: left;
+      margin: 0;
+
+      @include mobile_320 {
+        width: 290px;
+        height: 40px;
+        @include font-h2-mobile-white;
+        margin-top: 17px;
+      }
+    }
+
+    h6 {
+      @include font-h6-white;
+      margin-top: 40px;
+      text-align: left;
+
+      @include mobile_320 {
+        @include font-h6-mobile-white;
+        margin-top: 10px;
+      }
+    }
+
+    .catalog_button {
+      @include yellow-button;
+      width: 300px;
+      height: 95px;
+      padding: 36.5px 88px;
+      box-sizing: border-box;
+      font-weight: 700;
+      font-size: 18px;
+      float: left;
+      @include mobile_320 {
+        display: none;
+      }
+    }
+  }
+}
+.container {
+  position: relative;
+  width: 1920px;
+  margin: 0 auto;
+  top: -140px;
+  left: 0;
+  padding-left: 272px;
+  box-sizing: border-box;
+  @include mobile_320 {
+    @include container_mobile;
+    top: 0;
+    left: 0;
+  }
+  .description {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    @include mobile_320 {
+      flex-direction: column;
+    }
+    .div_offer {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-top: 10px;
+      margin-right: 20px;
+      @include mobile_320 {
+        width: 290px;
+      }
+
+      button {
+        @include yellow-button;
+        width: 18px;
+        height: 18px;
+        padding-left: 5px;
+        padding-top: 2px;
+        box-sizing: border-box;
+        margin-right: 5px;
+      }
+      p {
+        width: 178px;
+        @include font-p-screen-white;
+        text-align: left;
+        @include mobile_320 {
+          width: 100%;
+          @include font-p-mobile;
+          color: $base-grey;
+        }
+      }
+    }
+  }
+}

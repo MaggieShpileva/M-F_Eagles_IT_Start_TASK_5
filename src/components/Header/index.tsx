@@ -5,13 +5,12 @@ import MailIcon from "../../images/icons/mail_icon.png";
 import logo from "../../images/icons/logo_Sultan.png";
 import ManagerFoto from "../../images/icons/header_icon_women.png";
 import basketIcon from "../../images/icons/icons_basket.png";
-
+import phoneIcon from "../../images/icons/cil_phone.png";
 export const Header: FC = () => {
   return (
     <>
-      <div className={styles.line}></div>
-      <div className={styles.container}>
-        <div className={styles.top_row_menu}>
+      <div className={styles.top_row_menu}>
+        <div className={styles.container}>
           <div className={styles.data_company}>
             <div className={styles.adress}>
               <img src={LocationIcon} alt="" />
@@ -27,6 +26,17 @@ export const Header: FC = () => {
                 <span>На связи в любое время</span>
               </div>
             </div>
+            <div className={styles.sales_department}>
+              <img src={phoneIcon} alt="" />
+              <div className={styles.info}>
+                <h3>Отдел продаж</h3>
+                <span>+7 (777) 490-00-91</span>
+              </div>
+            </div>
+            <div className={styles.request_a_call}>
+              <button className={styles.call_button}></button>
+              <a href="">Заказать звонок</a>
+            </div>
           </div>
           <div className={styles.links_to_pages}>
             <a href="">О компании</a>
@@ -35,14 +45,20 @@ export const Header: FC = () => {
             <a href="">Контакты</a>
           </div>
         </div>
-        <div className={styles.main_row_menu}>
-          <div className={styles.logo_and_catalog}>
+      </div>
+      <div className={styles.main_row_menu}>
+        <div className={styles.container}>
+          <div className={styles.burger_menu_mobile}> </div>
+          <div className={styles.logo}>
             <img src={logo} alt="" />
+          </div>
+          <div className={styles.catalog}>
             <button className={styles.catalog_button}>Каталог</button>
           </div>
           <div className={styles.search}>
             <input type="text" placeholder="Поиск..." />
             <button className={styles.search_button}></button>
+            <button className={styles.search_button_mobile}>Поиск</button>
           </div>
 
           <div className={styles.contacts}>

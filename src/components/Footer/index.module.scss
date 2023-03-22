@@ -1,0 +1,271 @@
+@import "../../styles/mixins.scss";
+
+.footer {
+  width: 1920px;
+  margin: 0 auto;
+  background-color: #3f4e65;
+  box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+  @include mobile_320 {
+    width: 320px;
+  }
+  .container {
+    @include container;
+    display: flex;
+    padding-top: 71px;
+    @include mobile_320 {
+      @include container_mobile;
+      display: grid;
+      grid-template-areas:
+        "logo logo "
+        "menu categories"
+        "contacts messengers";
+    }
+    .logo {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      @include mobile_320 {
+        padding-top: 15px;
+        grid-area: logo;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+      img {
+        width: 156px;
+        height: 66px;
+        margin-bottom: 15px;
+        @include mobile_320 {
+          width: 97px;
+          height: 41px;
+        }
+      }
+      p {
+        @include font-p-footer-screen-white;
+        text-align: left;
+
+        @include mobile_320 {
+          @include font-p-mobile-white;
+          margin-top: 15px;
+        }
+      }
+      .subscribe {
+        margin-top: 45px;
+        @include mobile_320 {
+          margin-top: 15px;
+        }
+      }
+      .email {
+        margin-top: 14px;
+        text-align: left;
+        @include mobile_320 {
+        }
+
+        input {
+          width: 282px;
+          height: 59px;
+          background: #ededed;
+          border-radius: 36px;
+          border: 0;
+          font-weight: 400;
+          font-size: 12px;
+          letter-spacing: 0.035em;
+          padding: 21px 20px;
+          box-sizing: border-box;
+          @include mobile_320 {
+            width: 290px;
+            height: 59px;
+          }
+        }
+
+        .send_button {
+          @include yellow-button;
+          width: 39px;
+          height: 39px;
+          position: relative;
+          top: -50px;
+          right: -220px;
+          &:after {
+            position: absolute;
+            content: "";
+            width: 8px;
+            height: 15px;
+            top: 12px;
+            left: 16px;
+            background-image: url("../../images/icons/arrow_right.svg");
+          }
+          @include mobile_320 {
+            &::after {
+              left: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .menu,
+    .categories,
+    .contacts {
+      margin-right: 95px;
+      @include mobile_320 {
+        width: 130px;
+        margin-right: 0px;
+      }
+      h1 {
+        @include font-h1-mobile-white;
+        text-align: left;
+      }
+
+      p {
+        @include font-p-screen-white;
+        margin-top: 20px;
+        text-align: left;
+        @include mobile_320 {
+          @include font-p-mobile-white;
+          text-align: left;
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .menu {
+      width: 130px;
+      @include mobile_320 {
+        height: 210px;
+        grid-area: menu;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+    }
+
+    .categories {
+      @include mobile_320 {
+        width: 150px;
+        height: 210px;
+        grid-area: categories;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+      }
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      @include mobile_320 {
+        width: 152px;
+        grid-area: contacts;
+        grid-row-start: 3;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      h3 {
+        @include font-regular-h3;
+        color: white;
+        margin-top: 25px;
+        @include mobile_320 {
+        }
+      }
+      p {
+        margin: 5px 0;
+        @include mobile_320 {
+          font-weight: 300;
+          font-size: 12px;
+          margin-top: -3px;
+        }
+      }
+
+      .subtext {
+        margin-top: -3px;
+      }
+      .time_of_work {
+        @include mobile_320 {
+          margin-top: 5px;
+        }
+      }
+      a {
+        @include font-p-mobile;
+        color: white;
+        margin-bottom: 15px;
+        @include mobile_320 {
+          @include font-p-mobile-white;
+          font-weight: 300;
+          margin-top: 5px;
+        }
+      }
+      .cards {
+        display: flex;
+        margin-top: 10px;
+        img {
+          height: 39px;
+          margin-right: 5.06px;
+        }
+      }
+    }
+    .connection_in_Messengers {
+      .price_list {
+        width: 209px;
+        margin-right: 95px;
+        margin-bottom: 20px;
+        @include mobile_320 {
+          display: none;
+        }
+        h1 {
+          @include font-h1-mobile-white;
+        }
+        .price_list_button {
+          @include yellow-button;
+          width: 214px;
+          height: 59px;
+          position: relative;
+          letter-spacing: 0.03em;
+          padding: 23px 79.5px 21px 50.5px;
+
+          &:after {
+            position: absolute;
+            content: "";
+            width: 17px;
+            height: 17px;
+            top: 21px;
+            right: 43.5px;
+            background-image: url("../../images/icons/icon-download.png");
+          }
+        }
+      }
+      @include mobile_320 {
+        grid-area: messengers;
+        grid-row-start: 3;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        // margin-left: 10px;
+      }
+      p {
+        @include font-p-screen-white;
+        width: 163px;
+        text-align: left;
+        @include mobile_320 {
+          width: 110px;
+          margin-top: 60px;
+        }
+      }
+      .icons {
+        text-align: left;
+        margin-top: 17px;
+        img {
+          margin-right: 10px;
+          width: 39px;
+          height: 39px;
+          @include mobile_320 {
+          }
+        }
+      }
+    }
+  }
+}
