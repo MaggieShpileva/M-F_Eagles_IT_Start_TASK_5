@@ -52,6 +52,14 @@
   color: #ffffff;
 }
 
+@mixin font-p-regular-400 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
 @mixin font-p-mobile-white {
   font-family: "Inter";
   font-style: normal;
@@ -104,11 +112,47 @@
   text-align: left;
 }
 
+@mixin font-bold-for-card {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  color: #111111;
+}
+
+@mixin font-regular-for-title-card {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #111111;
+}
+
 @mixin font-p-mobile {
   font-family: "Inter";
   font-weight: 400;
   font-size: 10px;
   line-height: 15px;
+}
+
+@mixin font-light-for-card {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: #3f4e65;
+}
+
+@mixin font-light-bold-p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #111111;
 }
 
 @mixin container {
@@ -119,6 +163,14 @@
 @mixin container_mobile {
   width: 290px;
   margin: 0 auto;
+}
+
+@mixin font-small-p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }
 @mixin screen {
   @media screen and (min-width: 321px) {
