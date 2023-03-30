@@ -1,59 +1,52 @@
-import React, { FC, MouseEventHandler, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import { data } from "../../data/JSON";
 import { CardsOfProducts } from "../CardsOfProducts";
+import { SelectionPrice } from "./SelectionPrice";
+import { TypeProduct } from "./TypeProduct";
+import { SortProduct } from "./SortProducts";
+import { useSelector } from "react-redux";
+import { getAllProducts } from "../../Redux/all-product/selectors";
+import { store } from "../../Redux/store";
+
 export const Products: FC = () => {
-  let dataOfProducts = JSON.parse(data);
-
-  const [dataForCards, setDataForCards] = useState(dataOfProducts.products);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    let a = dataOfProducts.products.filter((item: any) => {
-      return item.filter.includes(event.currentTarget.name);
-    });
-    setDataForCards(a);
-  };
-
+  const dataOfProducts = JSON.parse(data);
+  const [dataForCards, setDataForCards] = useState(dataOfProducts);
+  const [startPriceValue, setStartPriceValue] = useState("");
+  const [endPriceValue, setEndPriceValue] = useState("");
+  //выбор типа сортировки
+  const all_product = useSelector(getAllProducts);
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumbs}></div>
       <div className={styles.title_of_page}>
-        <div className={styles.title}></div>
-        <div className={styles.sort}></div>
+        <div className={styles.title}>
+          <h1>Косметика и гигиена</h1>
+        </div>
+        <SortProduct
+          dataOfProducts={dataOfProducts}
+          setDataForCards={setDataForCards}
+        />
       </div>
-      <div className={styles.divs_with_sort}>
-        <button
-          name="body care"
-          className={styles.button_with_type}
-          onClick={handleClick}
-        >
-          Уход за телом
-        </button>
-
-        <button
-          name="hand care"
-          className={styles.button_with_type}
-          onClick={handleClick}
-        >
-          Уход за руками
-        </button>
-        <button
-          name="care
-          behind the legs"
-          className={styles.button_with_type}
-          onClick={handleClick}
-        >
-          Уход за ногами
-        </button>
-        <button
-          className={styles.button_with_type}
-          name="face care"
-          onClick={handleClick}
-        >
-          Уход за лицом
-        </button>
+      <TypeProduct
+        startPriceValue={startPriceValue}
+        setStartPriceValue={setStartPriceValue}
+        endPriceValue={endPriceValue}
+        setEndPriceValue={setEndPriceValue}
+        dataOfProducts={dataOfProducts}
+        setDataForCards={setDataForCards}
+      />
+      <div className={styles.basic_contant}>
+        <SelectionPrice
+          startPriceValue={startPriceValue}
+          setStartPriceValue={setStartPriceValue}
+          endPriceValue={endPriceValue}
+          setEndPriceValue={setEndPriceValue}
+          dataOfProducts={dataForCards}
+          setDataForCards={setDataForCards}
+        />
+        <CardsOfProducts dataOfProducts={dataForCards} />
       </div>
-      <CardsOfProducts dataOfProducts={dataForCards} />
     </div>
   );
 };

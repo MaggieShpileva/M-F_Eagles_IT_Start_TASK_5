@@ -1,0 +1,23 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles//colors.scss";
+
+.container {
+  width: 320px;
+  .sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    .sort_title {
+      @include font-regular-for-title-card;
+      margin-right: 5px;
+    }
+
+    select {
+      border: 0;
+      @include font-p-light-bold;
+      color: $base-black;
+      outline: none;
+    }
+  }
+}

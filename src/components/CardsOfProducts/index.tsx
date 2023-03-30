@@ -1,18 +1,33 @@
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { putProductInBasket } from "../../Redux/basket-products/actions";
+import { actionSelectProduct } from "../../Redux/ProductPage/actions";
+import { addProductReducer } from "../../Redux/ProductPage/reducer";
+import { store } from "../../Redux/store";
+import { ProductCard } from "../../types";
 import styles from "./index.module.scss";
 type Props = {
   dataOfProducts: any;
 };
 export const CardsOfProducts: FC<Props> = (dataOfProducts) => {
-  // console.log(dataOfProducts);
+  const put = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = (item: ProductCard) => {
+    put(actionSelectProduct(item));
+    navigate(`/product/${item.barcode}`);
+  };
+
+  const putProductToBasket = (item: ProductCard) => {
+    put(putProductInBasket(item));
+  };
   let renderCards: any = (data: any) => {
     return data.map((item: any, index: any) => {
-      // console.log(item);
       return (
         <div key={item.barcode + index} className={styles.card}>
           <img src={item.url} alt="" />
           <p className={styles.volume_of_product}>{item.size_type}</p>
-          <p className={styles.title_text}>
+          <p className={styles.title_text} onClick={() => handleClick(item)}>
             {" "}
             <span>{item.brand}</span> {item.name}
           </p>
@@ -31,14 +46,18 @@ export const CardsOfProducts: FC<Props> = (dataOfProducts) => {
           </div>
           <div className={styles.price_and_basket}>
             <p className={styles.price}>{item.price}</p>
-            <button className={styles.basket}>В КОРЗИНУ</button>
+            <button
+              className={styles.basket}
+              onClick={() => putProductToBasket(item)}
+            >
+              В КОРЗИНУ
+            </button>
           </div>
         </div>
       );
     });
   };
-  // const a = JSON.parse(test);
-  // console.log(a);
+
   return (
     <div className={styles.container}>
       {renderCards(dataOfProducts.dataOfProducts)}

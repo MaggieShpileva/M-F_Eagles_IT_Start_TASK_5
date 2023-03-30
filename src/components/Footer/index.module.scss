@@ -42,8 +42,9 @@
         }
       }
       p {
-        @include font-p-footer-screen-white;
+        @include font-p-light-bold;
         text-align: left;
+        color: $base-white;
 
         @include mobile_320 {
           @include font-p-mobile-white;

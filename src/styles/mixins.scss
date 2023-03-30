@@ -43,13 +43,20 @@
   color: #ffffff;
 }
 
-@mixin font-p-footer-screen-white {
+@mixin font-h1-light-bold-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  text-transform: uppercase;
+}
+@mixin font-p-regular {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
 }
 
 @mixin font-p-regular-400 {
@@ -79,14 +86,13 @@
   color: #ffffff;
 }
 
-@mixin font-h6-white {
+@mixin font-h6-bold {
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
   font-size: 30px;
   line-height: 45px;
   text-transform: uppercase;
-  color: #ffffff;
 }
 
 @mixin font-p-mobile {
@@ -137,22 +143,29 @@
   line-height: 15px;
 }
 
-@mixin font-light-for-card {
+@mixin font-p-light-for-card {
   font-family: "Inter";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
-  color: #3f4e65;
+  color: $base-grey;
 }
 
-@mixin font-light-bold-p {
+@mixin font-p-for-description {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@mixin font-p-light-bold {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  color: #111111;
 }
 
 @mixin container {

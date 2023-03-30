@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import LocationIcon from "../../images/icons/location_icon.png";
 import MailIcon from "../../images/icons/mail_icon.png";
@@ -6,9 +6,34 @@ import logo from "../../images/icons/logo_Sultan.png";
 import ManagerFoto from "../../images/icons/header_icon_women.png";
 import basketIcon from "../../images/icons/icons_basket.png";
 import phoneIcon from "../../images/icons/cil_phone.png";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartProducts } from "../../Redux/basket-products/selectors";
+
 export const Header: FC = () => {
+  const navigate = useNavigate();
+  const basketProducts = useSelector(selectCartProducts);
+  const [price, setPrice] = useState(0);
+
+  console.log(basketProducts);
+
+  useEffect(() => {
+    basketProducts.map((item) => {
+      console.log(item);
+      setPrice(price + item.price);
+    });
+  }, [basketProducts]);
+
+  const handleClickMainPage = () => {
+    navigate("/");
+  };
+
+  const handleClickToBasket = () => {
+    navigate("/basket");
+  };
+
   return (
-    <>
+    <div className={styles.header}>
       <div className={styles.top_row_menu}>
         <div className={styles.container}>
           <div className={styles.data_company}>
@@ -49,7 +74,7 @@ export const Header: FC = () => {
       <div className={styles.main_row_menu}>
         <div className={styles.container}>
           <div className={styles.burger_menu_mobile}> </div>
-          <div className={styles.logo}>
+          <div className={styles.logo} onClick={handleClickMainPage}>
             <img src={logo} alt="" />
           </div>
           <div className={styles.catalog}>
@@ -72,18 +97,18 @@ export const Header: FC = () => {
           <div className={styles.price_list}>
             <button className={styles.price_list_button}>Прайс-лист</button>
           </div>
-          <div className={styles.div_basket}>
+          <div className={styles.div_basket} onClick={handleClickToBasket}>
             <div className={styles.basket}>
               <img src={basketIcon} alt="" />
               <span>1</span>
             </div>
             <div className={styles.info}>
               <p>Корзина</p>
-              <h3>12 478 ₸ </h3>
+              <h3>{price} ₸ </h3>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

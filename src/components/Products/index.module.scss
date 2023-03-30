@@ -1,22 +1,23 @@
 @import "../../styles/mixins.scss";
 @import "../../styles//colors.scss";
 .container {
+  @include container;
   .breadcrumbs {
   }
   .title_of_page {
-  }
-  .divs_with_sort {
     display: flex;
-    .button_with_type {
-      width: 100px;
-      height: 70px;
-      padding: 18px 19px;
-      box-sizing: border-box;
-      box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
-      background-color: transparent;
-      border: 0;
-      border-radius: 10px;
-      @include font-p-regular-400;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      h1 {
+        @include font-h1-light-bold-title;
+      }
     }
+  }
+
+  .basic_contant {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

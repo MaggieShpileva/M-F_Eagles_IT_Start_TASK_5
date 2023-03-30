@@ -1,0 +1,88 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles//colors.scss";
+
+.container {
+  width: 620px;
+  .title {
+    @include font-regular-for-title-card;
+    text-align: left;
+  }
+
+  .search {
+    text-align: left;
+    @include mobile_320 {
+      width: 140px;
+      margin-left: 0;
+    }
+
+    input {
+      width: 238px;
+      height: 59px;
+      background: #ededed;
+      border-radius: 36px;
+      border: 0;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.035em;
+      padding: 21px 20px;
+      box-sizing: border-box;
+      @include mobile_320 {
+        display: none;
+      }
+    }
+
+    .search_button {
+      @include yellow-button;
+      width: 39px;
+      height: 39px;
+      position: relative;
+      top: -4px;
+      right: 49px;
+      &:after {
+        position: absolute;
+        content: "";
+        width: 18.35px;
+        height: 18.35px;
+        top: 11.47px;
+        left: 11.47px;
+        background-image: url("../../../images/icons/icons_search.png");
+      }
+      @include mobile_320 {
+        display: none;
+      }
+    }
+    .search_button_mobile {
+      display: none;
+      @include mobile_320 {
+        display: block;
+        position: relative;
+        @include mobile-button;
+        width: 140px;
+        height: 40px;
+        top: 0;
+        right: 0;
+
+        @include font-p-mobile;
+        padding: 13px 53px;
+        &:after {
+          position: absolute;
+          content: "";
+          width: 15px;
+          height: 15px;
+          top: 11.47px;
+          left: 20px;
+          background-image: url("../../../images/icons/search-mobile.png");
+        }
+      }
+    }
+  }
+  .manufacture_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .checkbox_div {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

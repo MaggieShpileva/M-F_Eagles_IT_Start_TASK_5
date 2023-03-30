@@ -1,0 +1,52 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles//colors.scss";
+
+.container {
+  width: 420px;
+  .title {
+    @include font-regular-for-title-card;
+    text-align: left;
+  }
+  .price_div {
+    .price_title {
+      @include font-p-light-for-card;
+      text-align: left;
+      margin-bottom: 16px;
+      span {
+        @include font-p-light-bold;
+        color: $base-black;
+      }
+    }
+    .price_inputs {
+      display: flex;
+      align-items: center;
+      p {
+        @include font-p-regular;
+        margin: 0 10px;
+        color: $base-grey;
+      }
+      input {
+        min-width: 100px;
+        max-width: 120px;
+        height: 23px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 198, 80, 0.3) 0%,
+          rgba(254, 202, 110, 0.3) 97.25%
+        );
+        border-radius: 1000px;
+        border: 0;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 15px;
+        color: $base-grey;
+        appearance: none;
+        outline: none;
+        &::-webkit-inner-spin-button {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+export const PRODUCT_ACTIONS = {
+  ADD_PRODUCT: "ADD_PRODUCT",
+};
