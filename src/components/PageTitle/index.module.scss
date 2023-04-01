@@ -1,8 +1,11 @@
+@import "../../styles/colors.scss";
 @import "../../styles/mixins.scss";
-@import "../../styles//colors.scss";
+
 .container {
   @include container;
 
+  .breadcrumbs {
+  }
   .title_of_page {
     display: flex;
     align-items: center;
@@ -12,11 +15,5 @@
         @include font-h1-light-bold-title;
       }
     }
-  }
-
-  .basic_contant {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 }

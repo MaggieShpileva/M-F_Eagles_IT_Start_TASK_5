@@ -1,0 +1,227 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/colors.scss";
+
+.main_row_menu {
+  margin: 0 auto;
+  border-top: 1px solid rgb(63, 78, 101, 0.2);
+  border-bottom: 1px solid rgb(63, 78, 101, 0.2);
+
+  .container {
+    @include container;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 96px;
+    flex-direction: row;
+    @include mobile_320 {
+      width: 290px;
+      display: grid;
+      grid-template-areas:
+        "burger-menu logo basket"
+        "catalog search";
+
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .burger_menu_mobile {
+      display: none;
+      @include mobile_320 {
+        @include yellow-button;
+        display: block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        grid-area: burger-menu;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        &::after {
+          position: absolute;
+          content: "";
+          top: 10px;
+          left: 10px;
+          width: 12px;
+          height: 12px;
+          background-image: url("../../../images/icons/burger-menu-mobile.png");
+          background-size: cover;
+        }
+      }
+    }
+
+    .logo {
+      cursor: pointer;
+      @include mobile_320 {
+        grid-area: logo;
+        grid-row-start: 1;
+        grid-row-end: 6;
+        grid-column-start: 3;
+        grid-column-end: 6;
+      }
+      img {
+        width: 156px;
+        height: 66px;
+        background-size: cover;
+        margin-right: 38px;
+        @include mobile_320 {
+          width: 97px;
+          height: 41px;
+        }
+      }
+    }
+    .catalog {
+      @include mobile_320 {
+        grid-area: catalog;
+        grid-row-start: 6;
+        grid-row-end: 8;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        width: 140px;
+      }
+      button {
+        @include yellow-button;
+        width: 192px;
+        height: 59px;
+        position: relative;
+        padding: 22.5px 54px;
+        letter-spacing: 0.026em;
+
+        &:after {
+          position: absolute;
+          content: "";
+          top: 23px;
+          right: 54px;
+          width: 15px;
+          height: 15px;
+          background-image: url("../../../images/icons/burger_menu.png");
+        }
+        @include mobile_320 {
+          @include mobile-button;
+          width: 140px;
+          height: 40px;
+          padding: 13px 53px;
+
+          &::after {
+            top: 13px;
+            right: 120px;
+            width: 15px;
+            height: 15px;
+            background-image: url("../../../images/icons/catalog-mobile.png");
+          }
+        }
+      }
+    }
+
+    
+    
+    .price_list {
+      @include mobile_320 {
+        display: none;
+      }
+      margin-left: 46px;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        top: 5px;
+        right: -27px;
+        height: 49px;
+        width: 0px;
+        opacity: 0.05;
+        border: 1px dashed #000000;
+      }
+
+      .price_list_button {
+        @include yellow-button;
+        width: 200px;
+        height: 59px;
+        position: relative;
+        letter-spacing: 0.03em;
+        padding: 23px 72px 21px 44px;
+
+        &:after {
+          position: absolute;
+          content: "";
+          width: 17px;
+          height: 17px;
+          top: 21px;
+          right: 43.5px;
+          background-image: url("../../../images/icons/icon-download.png");
+        }
+      }
+    }
+
+    .div_basket {
+      width: 128px;
+      height: 46px;
+      margin-left: 50px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      @include mobile_320 {
+        grid-area: basket;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        margin-left: 0;
+        width: 32px;
+        height: 30px;
+      }
+      .basket {
+        margin-top: 5px;
+
+        img {
+          width: 46px;
+          height: 46px;
+          background-size: cover;
+          @include mobile_320 {
+            width: 25px;
+            height: 25px;
+          }
+        }
+
+        span {
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          top: 1px;
+          left: 33px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #ffffff;
+          background-color: #ffc85e;
+          border-radius: 50%;
+          border: 2px solid rgb(255, 255, 255);
+          padding: 2px;
+          box-sizing: border-box;
+          @include mobile_320 {
+            width: 17px;
+            height: 17px;
+            @include font-p-mobile;
+            top: -2px;
+            left: 15px;
+            padding: 0px;
+          }
+        }
+      }
+      .info {
+        @include mobile_320 {
+          display: none;
+        }
+        margin-top: -2px;
+
+        p {
+          margin-left: -9px;
+          margin-top: 5px;
+        }
+
+        h3 {
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}

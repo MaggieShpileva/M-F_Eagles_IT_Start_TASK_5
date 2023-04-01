@@ -7,7 +7,7 @@ import { MainPage } from "./components/MainPage";
 import { Catalog } from "./components/Catalog";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import { ProductPage } from "./components/ProductPage";
-import { BasketPage } from "./components/BasketPage";
+import { CartPage } from "./components/CartPage";
 
 export const App = () => {
   return (
@@ -16,7 +16,7 @@ export const App = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/product/:barcode" element={<ProductPage />} />
-        <Route path="/basket" element={<BasketPage />} />
+        <Route path="/basket" element={<CartPage />} />
       </Routes>
     </BrowserRouter>
   );

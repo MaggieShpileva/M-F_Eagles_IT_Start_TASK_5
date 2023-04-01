@@ -226,4 +226,4 @@ const store = {
 //   description: " ",
 //   price: "",
 // },
-export let data = JSON.stringify(store.products);
+export let data = JSON.stringify(store);

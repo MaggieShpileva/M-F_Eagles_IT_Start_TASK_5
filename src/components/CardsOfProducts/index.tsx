@@ -1,28 +1,40 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectAllProducts } from "../../Redux/all-product/selectors";
 import { putProductInBasket } from "../../Redux/basket-products/actions";
+import { notFountProduct } from "../../Redux/product-filter/actions";
+import { notFound, searchProducts } from "../../Redux/product-filter/selectors";
 import { actionSelectProduct } from "../../Redux/ProductPage/actions";
-import { addProductReducer } from "../../Redux/ProductPage/reducer";
-import { store } from "../../Redux/store";
-import { ProductCard } from "../../types";
+import { ProductCardType } from "../../types";
 import styles from "./index.module.scss";
-type Props = {
-  dataOfProducts: any;
-};
-export const CardsOfProducts: FC<Props> = (dataOfProducts) => {
+type Props = {};
+export const CardsOfProducts: FC<Props> = () => {
   const put = useDispatch();
   const navigate = useNavigate();
-  const handleClick = (item: ProductCard) => {
+  const products = useSelector(selectAllProducts);
+  const [arr, setArr] = useState(products);
+  const handleClick = (item: ProductCardType) => {
     put(actionSelectProduct(item));
     navigate(`/product/${item.barcode}`);
   };
 
-  const putProductToBasket = (item: ProductCard) => {
-    put(putProductInBasket(item));
-  };
+  const search = useSelector(searchProducts);
+  const notFountProducts = useSelector(notFound);
+  console.log(notFountProducts);
+  useEffect(() => {
+    if (search.length != 0 && notFountProducts === false) {
+      setArr(search);
+    } else if (search.length == 0 && notFountProducts === true) {
+      setArr([]);
+    }
+  }, [search, notFountProducts]);
+
+  const putProductToBasket = (item: ProductCardType) => {};
   let renderCards: any = (data: any) => {
-    return data.map((item: any, index: any) => {
+    console.log(arr);
+    return arr.map((item: any, index: any) => {
       return (
         <div key={item.barcode + index} className={styles.card}>
           <img src={item.url} alt="" />
@@ -48,7 +60,7 @@ export const CardsOfProducts: FC<Props> = (dataOfProducts) => {
             <p className={styles.price}>{item.price}</p>
             <button
               className={styles.basket}
-              onClick={() => putProductToBasket(item)}
+              onClick={() => put(putProductInBasket(item))}
             >
               В КОРЗИНУ
             </button>
@@ -60,7 +72,8 @@ export const CardsOfProducts: FC<Props> = (dataOfProducts) => {
 
   return (
     <div className={styles.container}>
-      {renderCards(dataOfProducts.dataOfProducts)}
+      <div className={styles.render_cards}>{renderCards()}</div>
+      <div>{notFountProducts == true && <h2>ничего не найдено</h2>}</div>
     </div>
   );
 };

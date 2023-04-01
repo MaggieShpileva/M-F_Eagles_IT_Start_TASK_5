@@ -1,5 +1,5 @@
-export type ProductCard = {
-  barcode: string;
+export type ProductCardType = {
+  barcode: number;
   brand: string;
   description: string;
   filter: string[];

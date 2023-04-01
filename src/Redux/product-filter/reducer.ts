@@ -1,13 +1,29 @@
+import { ProductCardType } from "../../types";
 import { PRODUCT_FILTER } from "./action-types";
 
-const initialState = {
+export type filterReducerType = {
+  manufactureFilters: string[];
+  searchProducts: ProductCardType[];
+  notFound: boolean;
+};
+const initialState: filterReducerType = {
   manufactureFilters: [],
+  searchProducts: [],
+  notFound: false,
 };
 
-export const manufacureFilterReducer = (state = initialState, action: any) => {
+export const filterReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case PRODUCT_FILTER.MANUFACTURE_FILTER:
-      return action.payload;
+    case PRODUCT_FILTER.PUT_MANUFACTURE_FILTER:
+      return {
+        ...state,
+        manufactureFilters: [...state.manufactureFilters, action.payload],
+      };
+    case PRODUCT_FILTER.SEARCH_PRODUCTS:
+      return { ...state, searchProducts: action.payload };
+
+    case PRODUCT_FILTER.NOT_FOUND_PRODUCTS:
+      return { ...state, notFound: action.payload };
     default:
       return state;
   }

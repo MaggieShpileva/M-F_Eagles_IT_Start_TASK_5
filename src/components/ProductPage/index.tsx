@@ -24,7 +24,6 @@ export const ProductPage: FC = () => {
       setCountProduct(countProduct - 1);
     }
   };
-  console.log(store.getState());
   const handleClickPlus = () => {
     if (countProduct <= product.count_product) {
       setCountProduct(countProduct + 1);
@@ -34,6 +33,7 @@ export const ProductPage: FC = () => {
   return (
     <>
       <Header />
+      
       <div className={styles.container}>
         <div className={styles.breadcrumbs}></div>
 

@@ -5,48 +5,38 @@ import { CardsOfProducts } from "../CardsOfProducts";
 import { SelectionPrice } from "./SelectionPrice";
 import { TypeProduct } from "./TypeProduct";
 import { SortProduct } from "./SortProducts";
-import { useSelector } from "react-redux";
-import { getAllProducts } from "../../Redux/all-product/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAllProducts } from "../../Redux/all-product/selectors";
 import { store } from "../../Redux/store";
+import { PageTitle } from "../PageTitle";
+import { allProducts } from "../../Redux/all-product/actions";
 
 export const Products: FC = () => {
   const dataOfProducts = JSON.parse(data);
-  const [dataForCards, setDataForCards] = useState(dataOfProducts);
-  const [startPriceValue, setStartPriceValue] = useState("");
-  const [endPriceValue, setEndPriceValue] = useState("");
+  // const [startPriceValue, setStartPriceValue] = useState("");
+  // const [endPriceValue, setEndPriceValue] = useState("");
   //выбор типа сортировки
-  const all_product = useSelector(getAllProducts);
+  const put = useDispatch();
+  put(allProducts(dataOfProducts));
   return (
-    <div className={styles.container}>
-      <div className={styles.breadcrumbs}></div>
-      <div className={styles.title_of_page}>
-        <div className={styles.title}>
-          <h1>Косметика и гигиена</h1>
-        </div>
-        <SortProduct
-          dataOfProducts={dataOfProducts}
-          setDataForCards={setDataForCards}
-        />
-      </div>
-      <TypeProduct
-        startPriceValue={startPriceValue}
-        setStartPriceValue={setStartPriceValue}
-        endPriceValue={endPriceValue}
-        setEndPriceValue={setEndPriceValue}
-        dataOfProducts={dataOfProducts}
-        setDataForCards={setDataForCards}
-      />
-      <div className={styles.basic_contant}>
-        <SelectionPrice
+    <>
+      <PageTitle title={"Косметика и гигиена"} />
+      <div className={styles.container}>
+        <SortProduct />
+        {/* 
+   <TypeProduct
           startPriceValue={startPriceValue}
           setStartPriceValue={setStartPriceValue}
           endPriceValue={endPriceValue}
           setEndPriceValue={setEndPriceValue}
-          dataOfProducts={dataForCards}
+          dataOfProducts={dataOfProducts}
           setDataForCards={setDataForCards}
-        />
-        <CardsOfProducts dataOfProducts={dataForCards} />
+        />  */}
+        <div className={styles.basic_contant}>
+          <SelectionPrice />
+          <CardsOfProducts />
+        </div>
       </div>
-    </div>
+    </>
   );
 };

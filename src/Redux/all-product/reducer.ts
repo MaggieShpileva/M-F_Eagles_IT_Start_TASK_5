@@ -1,12 +1,17 @@
+import { ProductCardType } from "../../types";
 import { ALL_PRODUCTS } from "./action-types";
 
-const initialState = {
-  allProducts: [],
+export type ProductsReducer = {
+  products: ProductCardType[];
 };
 
-export const getAllProductsReducer = (state = initialState, action: any) => {
+const initialState: ProductsReducer = {
+  products: [],
+};
+
+export const allProductsReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case ALL_PRODUCTS.GET_ALL_PRODUCTS:
+    case ALL_PRODUCTS.ADD_ALL_PRODUCTS:
       return action.payload;
     default:
       return state;

@@ -1,4 +1,4 @@
-import { ProductCard } from "../../types";
+import { ProductCardType } from "../../types";
 import { BASKET_PRODUCTS } from "./action-types";
 
 export const getAllBasketProduct = (value: any) => {
@@ -8,7 +8,7 @@ export const getAllBasketProduct = (value: any) => {
   };
 };
 
-export const putProductInBasket = (value: ProductCard) => {
+export const putProductInBasket = (value: ProductCardType) => {
   return {
     type: BASKET_PRODUCTS.PUT_PRODUCT,
     payload: value,

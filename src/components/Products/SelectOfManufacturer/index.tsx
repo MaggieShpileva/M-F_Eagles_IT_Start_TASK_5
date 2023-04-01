@@ -1,38 +1,52 @@
-import React, { DetailedHTMLProps, FC, HTMLAttributes, useEffect } from "react";
-import { ProductCard } from "../../../types/index";
+import React, {
+  DetailedHTMLProps,
+  FC,
+  HTMLAttributes,
+  useEffect,
+  useState,
+} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllProducts } from "../../../Redux/all-product/selectors";
+import { putManufactureFilter } from "../../../Redux/product-filter/actions";
+import { putFilterProducts } from "../../../Redux/select-products/actions";
+import { store } from "../../../Redux/store";
+import { ProductCardType } from "../../../types/index";
 import styles from "./index.module.scss";
 
-type Props = {
-  // startPriceValue: string;
-  // endPriceValue: string;
-  // setStartPriceValue: React.Dispatch<React.SetStateAction<string>>;
-  // setEndPriceValue: React.Dispatch<React.SetStateAction<string>>;
-  dataOfProducts: ProductCard[];
-  setDataForCards: React.Dispatch<any>;
-};
-
-export const SelectOfManufacturer: FC<Props> = (props) => {
+export const SelectOfManufacturer: FC = () => {
+  const products = useSelector(selectAllProducts);
+  const [filter, setFilter] = useState([]);
+  const put = useDispatch();
+  // g(products.products.map);
   const renderManufactures = () => {
-    // let result: any = [];
+    const resultArr = products.map((item: any) => {
+      return item.manufacturer;
+    });
 
-    // for (let str of props.dataOfProducts) {
-    //   if (!result.includes(str.manufacturer)) {
-    //     result.push(str.manufacturer);
-    //   }
-    // }
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(event.target.checked);
-    };
-
-    return props.dataOfProducts.map((item: ProductCard, index: number) => {
+    const res = Array.from(new Set(resultArr));
+    return res.map((item, index) => {
       return (
-        <div className={styles.checkbox_div} key={`${index}-${item.barcode}`}>
-          <input type="checkbox" onChange={(event) => handleChange(event)} />
-          <p>{item.manufacturer}</p>
+        <div className={styles.checkbox_div} key={`${index}-${item}`}>
+          <input
+            type="checkbox"
+            // onChange={(event) => handleChange(event, item)}
+          />
+          <p>{item}</p>
         </div>
       );
     });
+  };
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    item?: string
+  ) => {
+    if (event.target.checked === true) {
+      // put(putManufactureFilter(item));
+      // setFilter([...filter, item]);
+    } else {
+      // filter.includes(item)
+    }
   };
 
   return (

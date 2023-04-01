@@ -1,8 +1,8 @@
 import { ALL_PRODUCTS } from "./action-types";
 
-export const getAllProduct = (value: any) => {
+export const allProducts = (value: any) => {
   return {
-    type: ALL_PRODUCTS.GET_ALL_PRODUCTS,
+    type: ALL_PRODUCTS.ADD_ALL_PRODUCTS,
     payload: value,
   };
 };

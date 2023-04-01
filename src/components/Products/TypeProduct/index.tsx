@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { ProductCard } from "../../../types/index";
+import { ProductCardType } from "../../../types/index";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -7,16 +7,18 @@ type Props = {
   endPriceValue: string;
   setStartPriceValue: React.Dispatch<React.SetStateAction<string>>;
   setEndPriceValue: React.Dispatch<React.SetStateAction<string>>;
-  dataOfProducts: ProductCard[];
+  dataOfProducts: ProductCardType[];
   setDataForCards: React.Dispatch<any>;
 };
 
 export const TypeProduct: FC<Props> = (props) => {
   //выбор раздела товаров
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    let newDataOfProduct = props.dataOfProducts.filter((item: ProductCard) => {
-      return item.filter.includes(event.currentTarget.name);
-    });
+    let newDataOfProduct = props.dataOfProducts.filter(
+      (item: ProductCardType) => {
+        return item.filter.includes(event.currentTarget.name);
+      }
+    );
     props.setDataForCards(newDataOfProduct);
     handleData(newDataOfProduct);
   };

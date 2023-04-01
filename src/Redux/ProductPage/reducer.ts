@@ -17,7 +17,6 @@ const initialState = {
 };
 
 export const addProductReducer = (state = initialState, action: any) => {
-  console.log();
   switch (action.type) {
     case PRODUCT_ACTIONS.ADD_PRODUCT:
       return action.payload;

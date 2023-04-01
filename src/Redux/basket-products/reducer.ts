@@ -1,8 +1,8 @@
-import { ProductCard } from "../../types";
+import { ProductCardType } from "../../types";
 import { BASKET_PRODUCTS } from "./action-types";
 
 export type CartReducer = {
-  products: ProductCard[];
+  products: ProductCardType[];
 };
 
 const initialState: CartReducer = {

@@ -1,0 +1,73 @@
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+.product {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 291px;
+  width: 100%;
+  padding: 50px 0;
+  box-sizing: border-box;
+  .img_div {
+    width: 281px;
+    img {
+      height: 191px;
+      width: 281px;
+      object-fit: contain;
+    }
+  }
+  .product_data {
+    width: 565px;
+    .volume_of_product {
+      @include font-small-p;
+      color: $base-grey;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    span {
+      @include font-bold-for-card;
+    }
+
+    .title_text {
+      font-weight: 700;
+      font-size: 30px;
+      text-align: left;
+      color: $base-black;
+    }
+    .description {
+      @include font-p-for-description;
+    }
+  }
+  .count_div {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    .count_button {
+      width: 34px;
+      height: 23px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 198, 80, 0.3) 0%,
+        rgba(254, 202, 110, 0.3) 97.25%
+      );
+      border-radius: 1000px;
+      border: 0;
+    }
+    .count {
+      width: 45px;
+      text-align: center;
+    }
+  }
+  .price {
+    width: 200px;
+    h6 {
+      @include font-h6-bold;
+    }
+  }
+  .basket_button {
+    @include yellow-button;
+    width: 59px;
+    height: 59px;
+  }
+}
