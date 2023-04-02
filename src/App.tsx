@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 import { MainPage } from "./components/MainPage";
 
 import { Catalog } from "./components/Catalog";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { HashRouter, Route, Router, Routes } from "react-router-dom";
 import { ProductPage } from "./components/ProductPage";
 import { CartPage } from "./components/CartPage";
 import { data } from "./data/JSON";
@@ -18,14 +18,14 @@ export const App = () => {
   put(allProducts(dataOfProducts));
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/product/:filter/:barcode" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
