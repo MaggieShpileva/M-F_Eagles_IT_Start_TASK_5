@@ -1,0 +1,10 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles//colors.scss";
+
+.container {
+  width: 420px;
+  .title {
+    @include font-regular-for-title-card;
+    text-align: left;
+  }
+}

@@ -8,15 +8,22 @@ import { Catalog } from "./components/Catalog";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import { ProductPage } from "./components/ProductPage";
 import { CartPage } from "./components/CartPage";
+import { data } from "./data/JSON";
+import { useDispatch } from "react-redux";
+import { allProducts } from "./Redux/all-product/actions";
 
 export const App = () => {
+  const dataOfProducts = JSON.parse(data);
+  const put = useDispatch();
+  put(allProducts(dataOfProducts));
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/product/:barcode" element={<ProductPage />} />
-        <Route path="/basket" element={<CartPage />} />
+        <Route path="/product/:filter/:barcode" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,7 +3,7 @@
 const store = {
   products: [
     {
-      filter: ["body care"],
+      filter: ["body_care"],
       url: "https://admin.only.kz/storage/product/images63b2d63310efb.png",
       name: "Бомбочка для ванны HAPPY WATERMELON",
       size_type: "50 гр",
@@ -17,7 +17,7 @@ const store = {
       count_product: 0,
     },
     {
-      filter: ["hand care", "face care"],
+      filter: ["hand_care", "face_care"],
       url: "https://cdn.eapteka.ru/upload/offer_photo/498/435/resized/450_450_1_18654cff2855c0f6e834ba35b6e95760.jpeg?t=1667302162&_cvc=1679455803",
       name: "BIO-SOAP Экологичное туалетное мыло. Литсея и бергамот",
       size_type: "90 г",
@@ -32,7 +32,7 @@ const store = {
     },
 
     {
-      filter: ["Dishwashing liquid"],
+      filter: ["dishwashing_liquid"],
       url: "https://aosgel.ru/wp-content/uploads/2021/01/AOS_Crystal_450_front.jpg",
       name: "Средство для мытья посуды Crystal",
       size_type: "450 мл",
@@ -45,7 +45,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["washing powder"],
+      filter: ["washing_powder"],
       url: "https://img.fozzyshop.com.ua/dnipro/133974-medium_default/ariel-avt-gel-smz-zhidkij-v-rastvorimykh-kapsulakh-gornyj-istochnik-13x27g.jpg",
       name: " Автoмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
       size_type: "15 X 28.8 г",
@@ -58,7 +58,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["washing powder"],
+      filter: ["washing_powder"],
       url: "https://mybimax.ru/wp-content/uploads/2020/04/BiMAX_100pyaten_2400.jpg",
       name: "Порошок стиральный Автомат 100 пятен COMPACT",
       size_type: "1500 г",
@@ -71,7 +71,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["Dishwashing liquid"],
+      filter: ["dishwashin_liquid"],
       url: "https://static.detmir.st/media_pim/603/978/4978603/450/0.jpg?1678366958777",
       name: "Bio-Care экологичное средство для мытья посуды c экстрактом хлопка",
       size_type: "450 мл",
@@ -85,7 +85,7 @@ const store = {
       count_product: 10,
     },
     {
-      filter: ["hand care"],
+      filter: ["hand_care"],
       url: "https://static.insales-cdn.com/r/V22ggXmeIUo/rs:fit:1000:0:1/plain/images/products/1/5471/538015071/PhotoRoom-20220419_174413.png@webp",
       name: "Крем для рук и ногтей заживляющий, 100 мл (Jurassic SPA)",
       size_type: "100 мл",
@@ -99,7 +99,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["hand care", "face care"],
+      filter: ["hand_care", "face_care"],
       url: "https://images.satu.kz/1527692_w640_h640_maslo-energeticheskoe-dlya.jpg",
       name: "Масло энергетическое",
       size_type: "300 мл",
@@ -113,7 +113,7 @@ const store = {
       count_product: 15,
     },
     {
-      filter: ["face care"],
+      filter: ["face_care"],
       url: "https://images.satu.kz/67836676_w640_h640_massazhnyj-krem-dlya.jpg",
       name: "Массажный крем для лица  ",
       size_type: "250 мл",
@@ -127,7 +127,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["hand care"],
+      filter: ["hand_care"],
       url: "https://cosmetica.kz/wa-data/public/shop/products/68/42/4268/images/6543/6543.453x0.jpg",
       name: "КРЕМ ДЛЯ РУК ANTI ВОЗРАСТНОЙ",
       size_type: "50мл",
@@ -141,7 +141,7 @@ const store = {
       count_product: 0,
     },
     {
-      filter: ["face care"],
+      filter: ["face_care"],
       url: "https://images.satu.kz/134790853_w640_h640_kompleks-uhod-dlya-kozhi.jpg",
       name: "Комплекс-уход для кожи лица, склонной к пигментации",
       size_type: "50 мл",
@@ -169,7 +169,7 @@ const store = {
       count_product: 5,
     },
     {
-      filter: ["face care"],
+      filter: ["face_care"],
       url: "https://admin.only.kz/storage/product/images60194446a5891.png",
       name: "Пена для умывания clean it zero foam ",
       size_type: "150 мл",
@@ -184,7 +184,7 @@ const store = {
     },
 
     {
-      filter: ["face care"],
+      filter: ["face_care"],
       url: "https://admin.only.kz/storage/product/images615d59329bae3.png",
       name: "Увлажняющий крем с пробиотиками",
       size_type: "100 мл",
@@ -198,7 +198,7 @@ const store = {
       count_product: 10,
     },
     {
-      filter: ["care behind the legs"],
+      filter: ["care_behind_the_legs"],
       url: "https://admin.only.kz/storage/product/images6381c7fbb6989.png",
       name: "Смягчающий крем для ног Softening Foot Cream",
       size_type: "290 мл",
@@ -215,7 +215,7 @@ const store = {
 };
 
 // {
-//   filter: ["hand care","face care"],
+//   filter: ["hand_care","face_care"],
 //   url: "",
 //   name: "",
 //   size_type: "мл",

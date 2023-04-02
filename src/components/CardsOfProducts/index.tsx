@@ -1,79 +1,98 @@
 import React, { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { allProductsReducer } from "../../Redux/all-product/reducer";
 import { selectAllProducts } from "../../Redux/all-product/selectors";
-import { putProductInBasket } from "../../Redux/basket-products/actions";
-import { notFountProduct } from "../../Redux/product-filter/actions";
-import { notFound, searchProducts } from "../../Redux/product-filter/selectors";
-import { actionSelectProduct } from "../../Redux/ProductPage/actions";
-import { ProductCardType } from "../../types";
+import { filteredProducts } from "../../Redux/product-filter/actions";
+import {
+  brandFilter,
+  manufactureFilter,
+  selectNotFound,
+  searchProducts,
+  selectFilteredProducts,
+} from "../../Redux/product-filter/selectors";
+import { store } from "../../Redux/store";
+import { TProductCard } from "../../types";
+import { CartProduct } from "./CartProduct";
 import styles from "./index.module.scss";
+
 type Props = {};
+
 export const CardsOfProducts: FC<Props> = () => {
   const put = useDispatch();
-  const navigate = useNavigate();
   const products = useSelector(selectAllProducts);
   const [arr, setArr] = useState(products);
-  const handleClick = (item: ProductCardType) => {
-    put(actionSelectProduct(item));
-    navigate(`/product/${item.barcode}`);
-  };
 
   const search = useSelector(searchProducts);
-  const notFountProducts = useSelector(notFound);
-  console.log(notFountProducts);
+  const notFoundProducts = useSelector(selectNotFound);
+  const manufactureProducts = useSelector(manufactureFilter);
+  const brandFilters = useSelector(brandFilter);
+
+  const allFilteredProducts = useSelector(selectFilteredProducts);
   useEffect(() => {
-    if (search.length != 0 && notFountProducts === false) {
-      setArr(search);
-    } else if (search.length == 0 && notFountProducts === true) {
-      setArr([]);
+    //условие при поиске продуктов
+    if (search.length !== 0 && notFoundProducts === false) {
+      put(filteredProducts(search));
+    } else if (search.length === 0 && notFoundProducts === true) {
+      put(filteredProducts([]));
     }
-  }, [search, notFountProducts]);
+  }, [search, notFoundProducts]);
 
-  const putProductToBasket = (item: ProductCardType) => {};
-  let renderCards: any = (data: any) => {
-    console.log(arr);
-    return arr.map((item: any, index: any) => {
-      return (
-        <div key={item.barcode + index} className={styles.card}>
-          <img src={item.url} alt="" />
-          <p className={styles.volume_of_product}>{item.size_type}</p>
-          <p className={styles.title_text} onClick={() => handleClick(item)}>
-            {" "}
-            <span>{item.brand}</span> {item.name}
-          </p>
-          <div className={styles.description}>
-            <p className={styles.subtitle}>Штрихкод:</p>
-            <p className={styles.value}>{item.barcode}</p>
-          </div>
+  useEffect(() => {
+    let newArr: TProductCard[] = [];
 
-          <div className={styles.description}>
-            <p className={styles.subtitle}>Производитель:</p>
-            <p className={styles.value}>{item.manufacturer}</p>
-          </div>
-          <div className={styles.description}>
-            <p className={styles.subtitle}>Бренд:</p>
-            <p className={styles.value}>{item.brand}</p>
-          </div>
-          <div className={styles.price_and_basket}>
-            <p className={styles.price}>{item.price}</p>
-            <button
-              className={styles.basket}
-              onClick={() => put(putProductInBasket(item))}
-            >
-              В КОРЗИНУ
-            </button>
-          </div>
-        </div>
-      );
+    manufactureProducts.map((filter) => {
+      products.forEach((product) => {
+        if (filter === product.manufacturer) {
+          newArr.push(product);
+        }
+      });
     });
-  };
+
+    manufactureProducts.length
+      ? put(filteredProducts(newArr))
+      : put(filteredProducts(products));
+  }, [manufactureProducts]);
+
+  useEffect(() => {
+    let newArr: TProductCard[] = [];
+
+    brandFilters.map((filter) => {
+      products.forEach((product) => {
+        if (filter === product.brand) {
+          newArr.push(product);
+        }
+      });
+    });
+
+    brandFilters.length
+      ? put(filteredProducts(newArr))
+      : put(filteredProducts(products));
+  }, [brandFilters]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.render_cards}>{renderCards()}</div>
-      <div>{notFountProducts == true && <h2>ничего не найдено</h2>}</div>
+      <div className={styles.render_cards}>
+        {allFilteredProducts.map((item, index) => {
+          return (
+            <CartProduct
+              item={item}
+              index={index}
+              key={`${item.barcode} + ${index}`}
+            />
+          );
+        })}
+      </div>
+      <div>
+        {notFoundProducts === true && (
+          <div className={styles.not_found_div}>
+            <h2>ничего не найдено</h2>
+            <button onClick={() => put(filteredProducts(products))}>
+              Вернуться к основному каталогу
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

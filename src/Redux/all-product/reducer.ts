@@ -1,8 +1,8 @@
-import { ProductCardType } from "../../types";
+import { TProductCard } from "../../types";
 import { ALL_PRODUCTS } from "./action-types";
 
 export type ProductsReducer = {
-  products: ProductCardType[];
+  products: TProductCard[];
 };
 
 const initialState: ProductsReducer = {

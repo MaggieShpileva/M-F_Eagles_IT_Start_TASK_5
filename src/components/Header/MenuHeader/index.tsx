@@ -2,22 +2,27 @@ import { FC, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import logo from "../../../images/icons/logo_Sultan.png";
 import cartIcon from "../../../images/icons/icons_basket.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCartProducts } from "../../../Redux/basket-products/selectors";
+import {
+  selectCartProducts,
+  selectCount,
+} from "../../../Redux/cart-products/selectors";
 import { Contacts } from "./Contacts";
 import { Search } from "./Search";
+import { store } from "../../../Redux/store";
+import { useDispatch } from "react-redux";
 
 export const MenuHeader: FC = () => {
   const navigate = useNavigate();
-  const CartProducts = useSelector(selectCartProducts);
-  const [price, setPrice] = useState(0);
-  useEffect(() => {
-    CartProducts.map((item) => {
-      setPrice(price + item.price);
-    });
-  }, [CartProducts]);
-
+  const countProducts = useSelector(selectCount);
+  console.log(countProducts);
+  let count = 0;
+  let total = 0;
+  for (let item in countProducts) {
+    count += countProducts[item].count;
+    total += countProducts[item].product.price;
+  }
   return (
     <div className={styles.main_row_menu}>
       <div className={styles.container}>
@@ -39,14 +44,14 @@ export const MenuHeader: FC = () => {
         <div className={styles.price_list}>
           <button className={styles.price_list_button}>Прайс-лист</button>
         </div>
-        <div className={styles.div_basket} onClick={() => navigate("/basket")}>
-          <div className={styles.basket}>
+        <div className={styles.div_cart} onClick={() => navigate("/cart")}>
+          <div className={styles.cart}>
             <img src={cartIcon} alt="" />
-            <span>1</span>
+            <span>{count}</span>
           </div>
           <div className={styles.info}>
             <p>Корзина</p>
-            <h3>{price} ₸ </h3>
+            <h3>{total} ₸ </h3>
           </div>
         </div>
       </div>

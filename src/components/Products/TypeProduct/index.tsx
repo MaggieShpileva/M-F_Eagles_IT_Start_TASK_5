@@ -1,39 +1,27 @@
 import React, { FC, useEffect, useState } from "react";
-import { ProductCardType } from "../../../types/index";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectAllProducts } from "../../../Redux/all-product/selectors";
+import { filteredProducts } from "../../../Redux/product-filter/actions";
+import { TProductCard } from "../../../types/index";
 import styles from "./index.module.scss";
 
-type Props = {
-  startPriceValue: string;
-  endPriceValue: string;
-  setStartPriceValue: React.Dispatch<React.SetStateAction<string>>;
-  setEndPriceValue: React.Dispatch<React.SetStateAction<string>>;
-  dataOfProducts: ProductCardType[];
-  setDataForCards: React.Dispatch<any>;
-};
+export const TypeProduct: FC = () => {
+  const products = useSelector(selectAllProducts);
+  const put = useDispatch();
 
-export const TypeProduct: FC<Props> = (props) => {
   //выбор раздела товаров
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    let newDataOfProduct = props.dataOfProducts.filter(
-      (item: ProductCardType) => {
-        return item.filter.includes(event.currentTarget.name);
-      }
-    );
-    props.setDataForCards(newDataOfProduct);
-    handleData(newDataOfProduct);
-  };
-  // запись начальной и конечной цены
-  const handleData = (data: any) => {
-    let newData = data.slice().sort((a: any, b: any) => {
-      return a.price > b.price ? 1 : -1;
+    let newDataProduct = products.filter((item: TProductCard) => {
+      return item.filter.includes(event.currentTarget.name);
     });
-    props.setStartPriceValue(newData[0].price);
-    props.setEndPriceValue(newData[newData.length - 1].price);
+    put(filteredProducts(newDataProduct));
   };
+
   return (
     <div className={styles.divs_with_sort}>
       <button
-        name="body care"
+        name="body_care"
         className={styles.button_with_type}
         onClick={handleClick}
       >
@@ -41,15 +29,14 @@ export const TypeProduct: FC<Props> = (props) => {
       </button>
 
       <button
-        name="hand care"
+        name="hand_care"
         className={styles.button_with_type}
         onClick={handleClick}
       >
         Уход за руками
       </button>
       <button
-        name="care
-          behind the legs"
+        name="care_behind_the_legs"
         className={styles.button_with_type}
         onClick={handleClick}
       >
@@ -57,7 +44,7 @@ export const TypeProduct: FC<Props> = (props) => {
       </button>
       <button
         className={styles.button_with_type}
-        name="face care"
+        name="face_care"
         onClick={handleClick}
       >
         Уход за лицом

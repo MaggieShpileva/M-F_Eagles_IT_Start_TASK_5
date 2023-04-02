@@ -1,0 +1,32 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+
+.container {
+  @include container;
+  .breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 45px;
+    p {
+      margin-right: 20px;
+      position: relative;
+      @include font-p-light-for-card;
+      &:not(:last-child)::after {
+        position: absolute;
+        content: "";
+        width: 0px;
+        height: 18px;
+        top: 0px;
+        right: -10px;
+
+        border: 1px dashed #3f4e65;
+      }
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

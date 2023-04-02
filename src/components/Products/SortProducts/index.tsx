@@ -1,46 +1,54 @@
 import React, { FC, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectAllProducts } from "../../../Redux/all-product/selectors";
-import { ProductCardType } from "../../../types/index";
+import { filteredProducts } from "../../../Redux/product-filter/actions";
+import {
+  brandFilter,
+  manufactureFilter,
+  selectFilteredProducts,
+} from "../../../Redux/product-filter/selectors";
+import { TProductCard } from "../../../types/index";
 import styles from "./index.module.scss";
 
 type Props = {};
 
 export const SortProduct: FC<Props> = (props) => {
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState<string>("");
   const products = useSelector(selectAllProducts);
-  // const [newData, setNewData] = useState([]);
+  const allFilteredProducts = useSelector(selectFilteredProducts);
+  const manufactureProducts = useSelector(manufactureFilter);
+  const brandFilters = useSelector(brandFilter);
+  const put = useDispatch();
+
   // вычисление начальной и конечной цены
-  let newProducts = [];
+  let newProducts: TProductCard[] = [];
   const handleChangeSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortType(event.target.value);
   };
   //сортирока товаров
   useEffect(() => {
     if (sortType == "price increase") {
-      // setNewData(
-      newProducts = products.slice().sort((a: any, b: any) => {
+      newProducts = allFilteredProducts.slice().sort((a, b) => {
         return a.price > b.price ? 1 : -1;
       });
-      // console.log(newProducts);
-      // );
+    } else if (sortType == "price reduction") {
+      newProducts = allFilteredProducts.slice().sort((a, b) => {
+        return a.price < b.price ? 1 : -1;
+      });
+    } else if (sortType == "sort to name") {
+      newProducts = allFilteredProducts.slice().sort((a, b) => {
+        return a.brand > b.brand ? 1 : -1;
+      });
+    } else if (sortType == "sort by popularity") {
+      newProducts = products;
     }
-    // else if (sortType == "price reduction") {
-    //   props.setDataForCards(
-    //     props.dataOfProducts.sort((a: any, b: any) => {
-    //       return a.price < b.price ? 1 : -1;
-    //     })
-    //   );
-    // } else if (sortType == "sort to name") {
-    //   props.setDataForCards(
-    //     props.dataOfProducts.sort((a: any, b: any) => {
-    //       return a.brand > b.brand ? 1 : -1;
-    //     })
-    //   );
-    // } else if (sortType == "sort by popularity") {
-    //   props.setDataForCards(products);
-    // }
+
+    put(filteredProducts(newProducts));
   }, [sortType]);
+
+  useEffect(() => {
+    setSortType("sort by popularity");
+  }, [manufactureProducts, brandFilters]);
 
   return (
     <div className={styles.container}>

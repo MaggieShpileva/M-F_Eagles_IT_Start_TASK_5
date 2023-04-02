@@ -1,4 +1,4 @@
-export type ProductCardType = {
+export type TProductCard = {
   barcode: number;
   brand: string;
   description: string;

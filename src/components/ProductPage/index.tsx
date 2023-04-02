@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Footer } from "../Footer";
 import { selectProduct } from "../../Redux/ProductPage/selectors";
 import { store } from "../../Redux/store";
+import { BreadCrumbs } from "../BreadCrumbs";
 
 export const ProductPage: FC = () => {
   const [activeDescription, setActiveDescription] = useState(true);
@@ -14,7 +15,6 @@ export const ProductPage: FC = () => {
   const [countProduct, setCountProduct] = useState(1);
 
   const product = useSelector(selectProduct);
-  console.log(product.barcode);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -33,7 +33,7 @@ export const ProductPage: FC = () => {
   return (
     <>
       <Header />
-      
+      <BreadCrumbs />
       <div className={styles.container}>
         <div className={styles.breadcrumbs}></div>
 

@@ -6,48 +6,57 @@ import React, {
   useState,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllProducts } from "../../../Redux/all-product/selectors";
-import { putManufactureFilter } from "../../../Redux/product-filter/actions";
-import { putFilterProducts } from "../../../Redux/select-products/actions";
-import { store } from "../../../Redux/store";
-import { ProductCardType } from "../../../types/index";
+import { selectAllProducts } from "../../../../Redux/all-product/selectors";
+import { putManufactureFilter } from "../../../../Redux/product-filter/actions";
 import styles from "./index.module.scss";
 
-export const SelectOfManufacturer: FC = () => {
+export const SelectManufacturer: FC = () => {
   const products = useSelector(selectAllProducts);
-  const [filter, setFilter] = useState([]);
   const put = useDispatch();
-  // g(products.products.map);
+  const [listManufactures, setListManufactures] = useState<string[]>([]);
+
+  //запись всех производителей
   const renderManufactures = () => {
     const resultArr = products.map((item: any) => {
       return item.manufacturer;
     });
 
+    //сортировка производителей
     const res = Array.from(new Set(resultArr));
-    return res.map((item, index) => {
+
+    //отрисовка чекбоксов с производителями
+    return res.map((item: string, index) => {
       return (
         <div className={styles.checkbox_div} key={`${index}-${item}`}>
           <input
             type="checkbox"
-            // onChange={(event) => handleChange(event, item)}
+            onChange={(event) => handleChangeManufacture(event, item)}
           />
           <p>{item}</p>
         </div>
       );
     });
   };
-
-  const handleChange = (
+  const handleChangeManufacture = (
     event: React.ChangeEvent<HTMLInputElement>,
     item?: string
   ) => {
-    if (event.target.checked === true) {
-      // put(putManufactureFilter(item));
-      // setFilter([...filter, item]);
+    let result = [];
+    if (event.target.checked == true && item != undefined) {
+      result.push(item);
+      setListManufactures((prevArr) => [...prevArr, item]);
     } else {
-      // filter.includes(item)
+      setListManufactures(
+        listManufactures.filter((key) => {
+          return key != item;
+        })
+      );
     }
   };
+  useEffect(() => {
+    const res = Array.from(new Set(listManufactures));
+    put(putManufactureFilter(res));
+  }, [listManufactures]);
 
   return (
     <div className={styles.container}>

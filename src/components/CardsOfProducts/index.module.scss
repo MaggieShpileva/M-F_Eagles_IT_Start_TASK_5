@@ -2,83 +2,34 @@
 @import "../../styles/colors.scss";
 .container {
   width: 1020px;
-
+  margin-bottom: 60px;
   .render_cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    .card {
-      width: 326px;
-      height: 490px;
-      padding: 42px 21px 29px 23px;
-      box-sizing: border-box;
-      box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06);
-      border-radius: 10px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      img {
-        height: 180px;
-        object-fit: contain;
-      }
-      .volume_of_product {
-        @include font-small-p;
-        color: $base-grey;
-        text-align: left;
-        margin-bottom: 10px;
-      }
+  }
 
-      span {
-        @include font-bold-for-card;
-      }
-
-      .title_text {
-        @include font-regular-for-title-card;
-        text-align: left;
-        margin-bottom: 20px;
-      }
-      .description {
-        text-align: left;
-        display: flex;
-        align-items: center;
-
-        .subtitle {
-          @include font-p-light-for-card;
-          margin-right: 5px;
-        }
-        .value {
-          @include font-bold-for-card;
-        }
-      }
-
-      .price_and_basket {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        position: absolute;
-        bottom: 29px;
-        .price {
-          @include font-bold-for-card;
-          margin-right: 40px;
-        }
-        .basket {
-          @include yellow-button;
-          width: 153px;
-          height: 45px;
-          padding: 16.5px 14px 16.5px 25px;
-          box-sizing: border-box;
-          position: relative;
-          font-size: 10px;
-          font-weight: 700;
-          &:after {
-            position: absolute;
-            content: "";
-            width: 27px;
-            height: 27px;
-            right: 30px;
-            top: 10px;
-            background-image: url("../../images/icons/icons_basket_white.png");
-          }
-        }
+  .not_found_div {
+    width: 80%;
+    height: 200px;
+    padding-top: 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    button {
+      @include font-p-light-bold;
+      color: $base-grey;
+      cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      &:hover {
+        color: #ffc85e;
       }
     }
   }

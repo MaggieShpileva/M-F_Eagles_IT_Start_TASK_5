@@ -2,6 +2,9 @@
 @import "../../../styles//colors.scss";
 
 .container {
+  position: relative;
+  top: -50px;
+  right: -1100px;
   width: 320px;
   .sort {
     display: flex;

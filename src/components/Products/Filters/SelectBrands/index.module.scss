@@ -1,5 +1,5 @@
-@import "../../../styles/mixins.scss";
-@import "../../../styles//colors.scss";
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles//colors.scss";
 
 .container {
   width: 620px;
@@ -45,7 +45,7 @@
         height: 18.35px;
         top: 11.47px;
         left: 11.47px;
-        background-image: url("../../../images/icons/icons_search.png");
+        background-image: url("../../../../images/icons/icons_search.png");
       }
       @include mobile_320 {
         display: none;
@@ -71,7 +71,7 @@
           height: 15px;
           top: 11.47px;
           left: 20px;
-          background-image: url("../../../images/icons/search-mobile.png");
+          background-image: url("../../../../images/icons/search-mobile.png");
         }
       }
     }

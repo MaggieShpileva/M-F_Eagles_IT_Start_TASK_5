@@ -6,17 +6,15 @@ import {
   notFountProduct,
   searchProducts,
 } from "../../../../Redux/product-filter/actions";
-import { notFound } from "../../../../Redux/product-filter/selectors";
-import { store } from "../../../../Redux/store";
-import { ProductCardType } from "../../../../types";
+import { TProductCard } from "../../../../types";
 import styles from "./index.module.scss";
 
 export const Search: FC = () => {
   const [value, setValue] = useState("");
   const products = useSelector(selectAllProducts);
-  let data: ProductCardType[] = [];
-  let arr: string[] = [];
+  let data: TProductCard[] = [];
   const put = useDispatch();
+
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
   };
@@ -37,12 +35,17 @@ export const Search: FC = () => {
         put(notFountProduct(true));
       }
     }
-    console.log(store.getState());
+    setValue("");
   };
 
   return (
     <div className={styles.search}>
-      <input type="text" placeholder="Поиск..." onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="Поиск..."
+        onChange={handleChange}
+        value={value}
+      />
       <button className={styles.search_button} onClick={handleClick}></button>
       <button className={styles.search_button_mobile}>Поиск</button>
     </div>
