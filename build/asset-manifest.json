@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.66f8b97a.css",
+    "main.js": "/static/js/main.0f43ef65.js",
+    "static/js/787.04baedd0.chunk.js": "/static/js/787.04baedd0.chunk.js",
+    "static/media/banner-phono-full.png": "/static/media/banner-phono-full.350d18cf5885a901a405.png",
+    "static/media/Inter-VariableFont_slnt,wght.ttf": "/static/media/Inter-VariableFont_slnt,wght.aadb65ac45347ff46699.ttf",
+    "static/media/banner_image.png": "/static/media/banner_image.749c241469db32f2e182.png",
+    "static/media/Logo_footer.svg": "/static/media/Logo_footer.95318bcec9601a7a33220ad726bb60e8.svg",
+    "static/media/mastercard.svg": "/static/media/mastercard.64a68440ae704de4d18075278f21f511.svg",
+    "static/media/logos_wa.svg": "/static/media/logos_wa.db4fdea63d5ac10f8039908e900cc30f.svg",
+    "static/media/Visa.svg": "/static/media/Visa.95365c723d6bb18ea5dc496a1189a74c.svg",
+    "static/media/ci_share.svg": "/static/media/ci_share.c7ea557134a8977c1abb.svg",
+    "static/media/box-for-product.svg": "/static/media/box-for-product.25359892898a0e3cc992765a8a11383a.svg",
+    "static/media/logos_telegram.svg": "/static/media/logos_telegram.e9505159f8b4cb6d46bc2bd1a484b46c.svg",
+    "index.html": "/index.html",
+    "static/media/bx_bxs-download.svg": "/static/media/bx_bxs-download.11d3238f37bdb4da06fd.svg",
+    "static/media/arrow_right.svg": "/static/media/arrow_right.35ab94e2f8817f324bd3.svg",
+    "static/media/triangle.svg": "/static/media/triangle.5e5d30daddeae7614a94.svg",
+    "main.66f8b97a.css.map": "/static/css/main.66f8b97a.css.map",
+    "main.0f43ef65.js.map": "/static/js/main.0f43ef65.js.map",
+    "787.04baedd0.chunk.js.map": "/static/js/787.04baedd0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.66f8b97a.css",
+    "static/js/main.0f43ef65.js"
+  ]
+}
