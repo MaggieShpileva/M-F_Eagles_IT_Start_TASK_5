@@ -27,6 +27,7 @@ export const CardsOfProducts: FC<Props> = () => {
   const notFoundProducts = useSelector(selectNotFound);
   const manufactureProducts = useSelector(manufactureFilter);
   const brandFilters = useSelector(brandFilter);
+  const [countProductsOnPage, setCountProductsOnPage] = useState(0);
 
   const allFilteredProducts = useSelector(selectFilteredProducts);
   useEffect(() => {
@@ -56,7 +57,6 @@ export const CardsOfProducts: FC<Props> = () => {
 
   useEffect(() => {
     let newArr: TProductCard[] = [];
-
     brandFilters.map((filter) => {
       products.forEach((product) => {
         if (filter === product.brand) {
@@ -70,18 +70,59 @@ export const CardsOfProducts: FC<Props> = () => {
       : put(filteredProducts(products));
   }, [brandFilters]);
 
+  const renderButton = () => {
+    let a = Math.ceil(allFilteredProducts.length / 10);
+    const arr = [...Array(a)];
+
+    return arr.map((item, index) => {
+      return (
+        <button
+          key={`${index}`}
+          onClick={() => handleClickNextProducts(index)}
+          className={
+            index * 12 == countProductsOnPage
+              ? styles.button_active
+              : styles.button
+          }
+        >
+          {index + 1}
+        </button>
+      );
+    });
+  };
+
+  const handleClickNextProducts = (index: number) => {
+    setCountProductsOnPage(index * 12);
+    window.scrollTo(0, 0);
+  };
+
+  const handleClickTurnLeft = () => {
+    if (countProductsOnPage >= 12) {
+      setCountProductsOnPage(countProductsOnPage - 12);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const handleClickTurnRight = () => {
+    if (countProductsOnPage < Math.ceil(allFilteredProducts.length / 10)) {
+      setCountProductsOnPage(countProductsOnPage + 12);
+      window.scrollTo(0, 0);
+    }
+  };
   return (
     <div className={styles.container}>
       <div className={styles.render_cards}>
-        {allFilteredProducts.map((item, index) => {
-          return (
-            <CartProduct
-              item={item}
-              index={index}
-              key={`${item.barcode} + ${index}`}
-            />
-          );
-        })}
+        {allFilteredProducts
+          .slice(countProductsOnPage, countProductsOnPage + 12)
+          .map((item, index) => {
+            return (
+              <CartProduct
+                item={item}
+                index={index}
+                key={`${item.barcode} + ${index}`}
+              />
+            );
+          })}
       </div>
       <div>
         {notFoundProducts === true && (
@@ -92,6 +133,17 @@ export const CardsOfProducts: FC<Props> = () => {
             </button>
           </div>
         )}
+      </div>
+      <div className={styles.navigate_buttons}>
+        <button
+          className={styles.turn_left}
+          onClick={handleClickTurnLeft}
+        ></button>
+        {renderButton()}
+        <button
+          className={styles.turn_right}
+          onClick={handleClickTurnRight}
+        ></button>
       </div>
     </div>
   );

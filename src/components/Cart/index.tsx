@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { countProductsCart } from "../../Redux/cart-products/actions";
 import {
   selectCartProducts,
   selectCount,
@@ -12,9 +13,10 @@ type Props = {
   count: number;
 };
 export const Cart: FC<Props> = (props) => {
-  console.log(props.cardBasket);
+  const selectProducts = useSelector(selectCount);
   const put = useDispatch();
   const handleClickMinus = () => {
+    console.log(selectProducts);
     // put(countCart(count));
   };
   // const handleClickPlus = () => {

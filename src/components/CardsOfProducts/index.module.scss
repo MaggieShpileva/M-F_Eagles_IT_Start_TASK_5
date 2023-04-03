@@ -3,6 +3,8 @@
 .container {
   width: 1020px;
   margin-bottom: 60px;
+  padding-bottom: 60px;
+  position: relative;
   .render_cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -31,6 +33,60 @@
       &:hover {
         color: #ffc85e;
       }
+    }
+  }
+
+  .navigate_buttons {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    height: 35px;
+
+    button {
+      cursor: pointer;
+    }
+
+    .turn_left,
+    .turn_right {
+      width: 9px;
+      height: 16px;
+      position: relative;
+      background-image: url("../../images/icons/pagination_vector.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: 0;
+      top: 2px;
+    }
+
+    .turn_left {
+      margin-right: 35px;
+    }
+
+    .turn_right {
+      transform: rotate(180deg);
+      margin-left: 35px;
+    }
+    .button {
+      @include font-p-light-bold;
+      color: $base-grey;
+      background-color: transparent;
+      border: 0;
+      width: 35px;
+      height: 35px;
+      margin: 1px;
+    }
+
+    .button_active {
+      width: 35px;
+      height: 35px;
+      border: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 198, 80, 0.3) 0%,
+        rgba(254, 202, 110, 0.3) 97.25%
+      );
+      border-radius: 1000px;
     }
   }
 }

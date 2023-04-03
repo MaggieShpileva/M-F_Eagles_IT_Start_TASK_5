@@ -24,7 +24,6 @@ export const CartProduct: FC<Props> = ({ item, index }) => {
   const handleClickCart = () => {
     setCount(count + 1);
     put(countProductsCart(item.barcode, item, count));
-
     put(putProductInBasket(item));
   };
 

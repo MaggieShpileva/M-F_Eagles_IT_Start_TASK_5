@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux";
 export const MenuHeader: FC = () => {
   const navigate = useNavigate();
   const countProducts = useSelector(selectCount);
-  console.log(countProducts);
   let count = 0;
   let total = 0;
   const selectProducts = useSelector(selectCount);
