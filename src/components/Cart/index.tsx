@@ -9,19 +9,12 @@ import { TProductCard } from "../../types";
 import styles from "./index.module.scss";
 type Props = {
   cardBasket: TProductCard;
+  count: number;
 };
 export const Cart: FC<Props> = (props) => {
-  const selectProducts = useSelector(selectCartProducts);
-  const allCount = useSelector(selectCount);
-  const [count, setCount] = useState(1);
+  console.log(props.cardBasket);
   const put = useDispatch();
   const handleClickMinus = () => {
-    console.log(selectProducts);
-    if (count < 1) {
-      setCount(1);
-    } else {
-      setCount(count - 1);
-    }
     // put(countCart(count));
   };
   // const handleClickPlus = () => {
@@ -56,7 +49,7 @@ export const Cart: FC<Props> = (props) => {
           >
             -
           </button>
-          <p className={styles.count}>{count}</p>
+          <p className={styles.count}>{props.count}</p>
           <button
             className={styles.count_button}
             // onClick={() => handleClickPlus()}
