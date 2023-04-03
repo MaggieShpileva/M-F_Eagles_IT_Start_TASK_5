@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.5760f90f.css",
-    "main.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.b97f12a9.js",
+    "main.css": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.26801666.css",
+    "main.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.3e5fa898.js",
     "static/js/787.04baedd0.chunk.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/787.04baedd0.chunk.js",
     "static/media/banner-phono-full.png": "/M-F_Eagles_IT_Start_TASK_5/static/media/banner-phono-full.350d18cf5885a901a405.png",
     "static/media/Inter-VariableFont_slnt,wght.ttf": "/M-F_Eagles_IT_Start_TASK_5/static/media/Inter-VariableFont_slnt,wght.aadb65ac45347ff46699.ttf",
@@ -15,14 +15,15 @@
     "static/media/logos_telegram.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/logos_telegram.e9505159f8b4cb6d46bc2bd1a484b46c.svg",
     "index.html": "/M-F_Eagles_IT_Start_TASK_5/index.html",
     "static/media/bx_bxs-download.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/bx_bxs-download.11d3238f37bdb4da06fd.svg",
+    "static/media/pagination_vector.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/pagination_vector.8009929457bde0328f8f.svg",
     "static/media/arrow_right.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/arrow_right.35ab94e2f8817f324bd3.svg",
     "static/media/triangle.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/triangle.5e5d30daddeae7614a94.svg",
-    "main.5760f90f.css.map": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.5760f90f.css.map",
-    "main.b97f12a9.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.b97f12a9.js.map",
+    "main.26801666.css.map": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.26801666.css.map",
+    "main.3e5fa898.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.3e5fa898.js.map",
     "787.04baedd0.chunk.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/787.04baedd0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5760f90f.css",
-    "static/js/main.b97f12a9.js"
+    "static/css/main.26801666.css",
+    "static/js/main.3e5fa898.js"
   ]
 }
