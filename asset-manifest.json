@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.5760f90f.css",
-    "main.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.66e5cca5.js",
+    "main.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.9f32a1a7.js",
     "static/js/787.04baedd0.chunk.js": "/M-F_Eagles_IT_Start_TASK_5/static/js/787.04baedd0.chunk.js",
     "static/media/banner-phono-full.png": "/M-F_Eagles_IT_Start_TASK_5/static/media/banner-phono-full.350d18cf5885a901a405.png",
     "static/media/Inter-VariableFont_slnt,wght.ttf": "/M-F_Eagles_IT_Start_TASK_5/static/media/Inter-VariableFont_slnt,wght.aadb65ac45347ff46699.ttf",
@@ -18,11 +18,11 @@
     "static/media/arrow_right.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/arrow_right.35ab94e2f8817f324bd3.svg",
     "static/media/triangle.svg": "/M-F_Eagles_IT_Start_TASK_5/static/media/triangle.5e5d30daddeae7614a94.svg",
     "main.5760f90f.css.map": "/M-F_Eagles_IT_Start_TASK_5/static/css/main.5760f90f.css.map",
-    "main.66e5cca5.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.66e5cca5.js.map",
+    "main.9f32a1a7.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/main.9f32a1a7.js.map",
     "787.04baedd0.chunk.js.map": "/M-F_Eagles_IT_Start_TASK_5/static/js/787.04baedd0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5760f90f.css",
-    "static/js/main.66e5cca5.js"
+    "static/js/main.9f32a1a7.js"
   ]
 }
