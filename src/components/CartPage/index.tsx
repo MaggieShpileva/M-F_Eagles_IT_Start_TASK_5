@@ -32,9 +32,11 @@ export const CartPage: FC = () => {
         );
       });
     } else {
-      <div className={styles.empty_cart}>
-        <h2>Ваша корзина пуста</h2>
-      </div>;
+      return (
+        <div className={styles.empty_cart}>
+          <h2>Ваша корзина пуста</h2>
+        </div>
+      );
     }
   };
 
