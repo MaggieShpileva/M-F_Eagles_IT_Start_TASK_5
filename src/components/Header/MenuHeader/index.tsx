@@ -19,9 +19,11 @@ export const MenuHeader: FC = () => {
   console.log(countProducts);
   let count = 0;
   let total = 0;
+  const selectProducts = useSelector(selectCount);
+
   for (let item in countProducts) {
     count += countProducts[item].count;
-    total += countProducts[item].product.price;
+    total += countProducts[item].product.price * count;
   }
   return (
     <div className={styles.main_row_menu}>

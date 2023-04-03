@@ -15,7 +15,6 @@ import { TProductCard } from "../../types";
 
 export const CartPage: FC = () => {
   const selectProducts = useSelector(selectCount);
-  console.log("selectProducts", selectProducts);
   let arr: any = [];
 
   const renderProductCart: any = () => {
