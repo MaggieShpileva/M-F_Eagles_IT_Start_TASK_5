@@ -16,7 +16,6 @@ export const Cart: FC<Props> = (props) => {
   const selectProducts = useSelector(selectCount);
   const put = useDispatch();
   const handleClickMinus = () => {
-    console.log(selectProducts);
     // put(countCart(count));
   };
   // const handleClickPlus = () => {

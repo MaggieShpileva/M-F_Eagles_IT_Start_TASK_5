@@ -11,11 +11,12 @@ import {
   putBrandFilter,
   putManufactureFilter,
 } from "../../../../Redux/product-filter/actions";
+import { selectFilteredProducts } from "../../../../Redux/product-filter/selectors";
 import { TProductCard } from "../../../../types/index";
 import styles from "./index.module.scss";
 
 export const SelectBrands: FC = () => {
-  const products = useSelector(selectAllProducts);
+  const products = useSelector(selectFilteredProducts);
   const [filterArr, setFilterArr] = useState<TProductCard[]>([]);
   const put = useDispatch();
   const [listBrands, setListBrands] = useState<string[]>([]);

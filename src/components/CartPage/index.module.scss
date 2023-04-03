@@ -3,7 +3,7 @@
 
 .container {
   @include container;
-
+  z-index: 0;
   .cart_products {
     .empty_cart {
       width: 100%;

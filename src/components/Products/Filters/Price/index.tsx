@@ -37,12 +37,13 @@ export const Price: FC = () => {
     setStartPriceValue(+event.target.value);
   };
 
-  // const handleBlurOnStartValue = () => {
-  //   let b = updateArr.filter((item) => {
-  //     return item.price > startPriceValue;
-  //   });
-  //   put(filteredProducts(b));
-  // };
+  const handleBlurOnStartValue = () => {
+    let b = updateArr.filter((item) => {
+      return item.price > startPriceValue;
+    });
+    console.log(b);
+    // put(filteredProducts(b));
+  };
 
   const handleChangeEndValue = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -73,7 +74,7 @@ export const Price: FC = () => {
           value={startPriceValue}
           onChange={handleChangeStartValue}
           onFocus={handleFocusStartValue}
-          // onBlur={handleBlurOnStartValue}
+          onBlur={handleBlurOnStartValue}
         />
         <p> - </p>
         <input

@@ -1,0 +1,17 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/colors.scss";
+.container {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  button {
+    @include yellow-button;
+    width: 192px;
+    height: 59px;
+    padding: 21px 37.5px;
+    box-sizing: border-box;
+  }
+}

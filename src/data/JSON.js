@@ -53,7 +53,8 @@ const store = {
       barcode: 4000099994,
       manufacturer: "Нэфис",
       brand: "AOS",
-      description: "",
+      description:
+        "Автoмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
       price: 800,
       count_product: 2,
     },

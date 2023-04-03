@@ -1,0 +1,189 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles//colors.scss";
+
+.buttons {
+  height: 77px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  * {
+    background: #ffffff;
+    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  .share {
+    width: 77px;
+    height: 100%;
+    border: 0;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 24px;
+      height: 24px;
+      top: 24px;
+      left: 24px;
+      background-image: url("../../../images/icons/ci_share.svg");
+    }
+  }
+
+  .delivery_text {
+    width: 316px;
+    height: 100%;
+    padding: 20.5px 35.5px;
+    box-sizing: border-box;
+    @include font-small-p;
+    span {
+      font-weight: 700;
+      margin-right: 0;
+    }
+  }
+  .price_list {
+    width: 186px;
+    height: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    color: $base-grey;
+    position: relative;
+    padding: 30px 64.5px 30px 37.5px;
+    box-sizing: border-box;
+    border: 0;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 17px;
+      height: 17px;
+      top: 30px;
+      right: 37px;
+      background-image: url("../../../images/icons/bx_bxs-download.svg");
+    }
+  }
+}
+
+.parameters,
+.characteristics {
+  .parameter {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    .subtitle {
+      @include font-p-light-for-card;
+      margin-right: 5px;
+    }
+    .value {
+      @include font-p-light-bold;
+      color: $base-black;
+    }
+  }
+}
+
+.description {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 269.5px;
+    height: 0;
+    bottom: -20px;
+    left: 0;
+    border: 1px dashed $base-grey;
+    opacity: 0.3;
+  }
+  .title {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    h5 {
+      @include font-regular-for-title-card;
+    }
+    .button_active,
+    .button_no_active {
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      position: relative;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 7px;
+        height: 7px;
+        top: 7px;
+        left: 5px;
+        background-image: url("../../../images/icons/triangle.svg");
+      }
+    }
+    .button_no_active {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .description_text {
+    @include font-p-for-description;
+    color: $base-grey;
+    width: 611px;
+    display: block;
+    opacity: 0;
+    animation: animation-for-appearance-text 1s forwards;
+  }
+  .description_text_none {
+    display: none;
+  }
+}
+
+.characteristics_div {
+  .title {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    h5 {
+      @include font-regular-for-title-card;
+    }
+    .button_active,
+    .button_no_active {
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      position: relative;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 7px;
+        height: 7px;
+        top: 7px;
+        left: 5px;
+        background-image: url("../../../images/icons/triangle.svg");
+      }
+    }
+    .button_no_active {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+.characteristics_none {
+  display: none;
+}
+
+@keyframes animation-for-appearance-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

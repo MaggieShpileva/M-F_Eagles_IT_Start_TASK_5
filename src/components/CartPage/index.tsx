@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   selectCartProducts,
@@ -12,15 +12,19 @@ import { PageTitle } from "../PageTitle";
 
 import styles from "./index.module.scss";
 import { TProductCard } from "../../types";
+import { Total } from "./Total";
+import { ModalSuccessOrder } from "./ModalSuccessOrder";
 
 export const CartPage: FC = () => {
   const selectProducts = useSelector(selectCount);
+  const [isModal, setIsModal] = useState(false);
   let arr: any = [];
-
+  let total = 0;
   const renderProductCart: any = () => {
     if (Object.keys(selectProducts).length != 0) {
       for (let item in selectProducts) {
         arr.push(Object.values(selectProducts[item]));
+        total += selectProducts[item].product.price;
       }
       return arr.map((item: any) => {
         return (
@@ -48,7 +52,9 @@ export const CartPage: FC = () => {
         <PageTitle title={"Корзина"} />
         <div className={styles.cart_products}>{renderProductCart()}</div>
       </div>
+      <Total total={total} isModal={isModal} setIsModal={setIsModal} />
       <Footer />
+      <ModalSuccessOrder isModal={isModal} setIsModal={setIsModal} />
     </div>
   );
 };

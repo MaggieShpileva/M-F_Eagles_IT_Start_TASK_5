@@ -8,13 +8,20 @@ import { Footer } from "../Footer";
 import { selectProduct } from "../../Redux/ProductPage/selectors";
 import { store } from "../../Redux/store";
 import { BreadCrumbs } from "../BreadCrumbs";
+import { selectCount } from "../../Redux/cart-products/selectors";
+import { countProductsCart } from "../../Redux/cart-products/actions";
+import { useDispatch } from "react-redux";
+import { InfoProduct } from "./InfoProduct";
 
 export const ProductPage: FC = () => {
-  const [activeDescription, setActiveDescription] = useState(true);
-  const [activeCharacteristics, setActiveCharacteristics] = useState(true);
   const [countProduct, setCountProduct] = useState(1);
+  const put = useDispatch();
+  const [click, setClick] = useState(2);
+  //все продукты в корзине
+  const products = useSelector(selectCount);
 
   const product = useSelector(selectProduct);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -30,6 +37,13 @@ export const ProductPage: FC = () => {
     }
   };
 
+  const addProductToCart = () => {
+    if (countProduct > 1) {
+      put(countProductsCart(product.barcode, product, countProduct));
+    } else {
+      put(countProductsCart(product.barcode, product, 1));
+    }
+  };
   return (
     <>
       <Header />
@@ -65,117 +79,12 @@ export const ProductPage: FC = () => {
                 <p>{countProduct}</p>
                 <button onClick={handleClickPlus}>+</button>
               </div>
-              <button className={styles.basket}>В корзину</button>
+              <button className={styles.basket} onClick={addProductToCart}>
+                В корзину
+              </button>
             </div>
-            <div className={styles.buttons}>
-              <button className={styles.share}></button>
-              <p className={styles.delivery_text}>
-                При покупке от <span> 10 000 ₸</span> бесплатная доставка по
-                Кокчетаву и области
-              </p>
-              <button className={styles.price_list}>Прайс-лист</button>
-            </div>
-            <div className={styles.parameters}>
-              <div className={styles.parameter}>
-                <p className={styles.subtitle}>Производитель:</p>
-                <p className={styles.value}>{product.manufacturer}</p>
-              </div>
-              <div className={styles.parameter}>
-                <p className={styles.subtitle}>Бренд:</p>
-                <p className={styles.value}>{product.brand}</p>
-              </div>
-              <div className={styles.parameter}>
-                <p className={styles.subtitle}>Артикул:</p>
-                <p className={styles.value}>{product.barcode}</p>
-              </div>
-              <div className={styles.parameter}>
-                <p className={styles.subtitle}>Штрихкод:</p>
-                <p className={styles.value}>{product.barcode}</p>
-              </div>
-            </div>
-            <div className={styles.description}>
-              <div className={styles.title}>
-                <h5>Описание</h5>
-                <button
-                  className={
-                    activeDescription
-                      ? styles.button_active
-                      : styles.button_no_active
-                  }
-                  onClick={() => {
-                    setActiveDescription(!activeDescription);
-                  }}
-                ></button>
-              </div>
-              <p
-                className={
-                  activeDescription
-                    ? styles.description_text
-                    : styles.description_text_none
-                }
-              >
-                {product.description}
-              </p>
-            </div>
-            <div className={styles.characteristics_div}>
-              <div className={styles.title}>
-                <h5>Характеристики</h5>
-                <button
-                  className={
-                    activeCharacteristics
-                      ? styles.button_active
-                      : styles.button_no_active
-                  }
-                  onClick={() => {
-                    setActiveCharacteristics(!activeCharacteristics);
-                  }}
-                ></button>
-              </div>
-              <div
-                className={
-                  activeCharacteristics
-                    ? styles.characteristics
-                    : styles.characteristics_none
-                }
-              >
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Назначение:</p>
-                  <p className={styles.value}>{product.brand}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Тип:</p>
-                  <p className={styles.value}>{product.brand}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Производитель:</p>
-                  <p className={styles.value}>{product.manufacturer}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Бренд:</p>
-                  <p className={styles.value}>{product.brand}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Артикул:</p>
-                  <p className={styles.value}>{product.barcode}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Штрихкод:</p>
-                  <p className={styles.value}>{product.barcode}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Вес:</p>
-                  <p className={styles.value}>{product.size_type}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Объем:</p>
-                  <p className={styles.value}>{product.size_type}</p>
-                </div>
-                <div className={styles.parameter}>
-                  <p className={styles.subtitle}>Кол-во в коробке:</p>
-                  <p className={styles.value}>{product.size_type}</p>
-                </div>
-              </div>
-            </div>
+
+            <InfoProduct product={product} />
           </div>
         </div>
       </div>
