@@ -7,6 +7,8 @@ import { SelectBrands } from "./SelectBrands";
 import { SelectManufacturer } from "./SelectManufacturer/index";
 import styles from "./index.module.scss";
 import { Price } from "./Price";
+import { ProductsSection } from "./ProductsSection";
+import { DeleteButton } from "./DeleteButton";
 
 export const Filters: FC = () => {
   return (
@@ -15,6 +17,8 @@ export const Filters: FC = () => {
       <Price />
       <SelectManufacturer />
       <SelectBrands />
+      <DeleteButton />
+      <ProductsSection />
     </div>
   );
 };

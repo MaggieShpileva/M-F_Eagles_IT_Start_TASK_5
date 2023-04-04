@@ -72,7 +72,7 @@ const store = {
       count_product: 2,
     },
     {
-      filter: ["dishwashin_liquid"],
+      filter: ["dishwashing_liquid"],
       url: "https://static.detmir.st/media_pim/603/978/4978603/450/0.jpg?1678366958777",
       name: "Bio-Care экологичное средство для мытья посуды c экстрактом хлопка",
       size_type: "450 мл",

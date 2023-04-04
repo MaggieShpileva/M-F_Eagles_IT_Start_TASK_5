@@ -22,9 +22,9 @@ export const searchProducts = (value: any) => {
   };
 };
 
-export const notFountProduct = (value: boolean) => {
+export const isFound = (value: boolean) => {
   return {
-    type: PRODUCT_FILTER.NOT_FOUND_PRODUCTS,
+    type: PRODUCT_FILTER.IS_FOUND_PRODUCTS,
     payload: value,
   };
 };

@@ -1,0 +1,9 @@
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+
+.container {
+  p {
+    @include font-regular-for-title-card;
+    margin: 20px 0 15px 0;
+  }
+}

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectAllProducts } from "../../../../Redux/all-product/selectors";
 import {
-  notFountProduct,
+  isFound,
   searchProducts,
 } from "../../../../Redux/product-filter/actions";
 import { TProductCard } from "../../../../types";
@@ -29,10 +29,10 @@ export const Search: FC = () => {
       });
       if (data.length != 0) {
         put(searchProducts(data));
-        put(notFountProduct(false));
+        put(isFound(true));
       } else {
         put(searchProducts([]));
-        put(notFountProduct(true));
+        put(isFound(false));
       }
     }
     setValue("");

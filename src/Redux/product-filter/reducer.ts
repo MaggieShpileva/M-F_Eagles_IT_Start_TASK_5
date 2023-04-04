@@ -7,14 +7,14 @@ export type filterReducerType = {
   manufactureFilters: string[];
   brandFilters: string[];
   searchProducts: TProductCard[];
-  notFound: boolean;
+  isFound: boolean;
   filteredProducts: TProductCard[];
 };
 const initialState: filterReducerType = {
   manufactureFilters: [],
   brandFilters: [],
   searchProducts: [],
-  notFound: false,
+  isFound: true,
   filteredProducts: [],
 };
 
@@ -34,8 +34,8 @@ export const filterReducer = (state = initialState, action: any) => {
     case PRODUCT_FILTER.SEARCH_PRODUCTS:
       return { ...state, searchProducts: action.payload };
 
-    case PRODUCT_FILTER.NOT_FOUND_PRODUCTS:
-      return { ...state, notFound: action.payload };
+    case PRODUCT_FILTER.IS_FOUND_PRODUCTS:
+      return { ...state, isFound: action.payload };
     case PRODUCT_FILTER.FILTERED_PRODUCTS:
       return { ...state, filteredProducts: action.payload };
     default:

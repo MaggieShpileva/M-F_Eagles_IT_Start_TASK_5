@@ -7,7 +7,7 @@ import { filteredProducts } from "../../Redux/product-filter/actions";
 import {
   brandFilter,
   manufactureFilter,
-  selectNotFound,
+  selectIsFound,
   searchProducts,
   selectFilteredProducts,
 } from "../../Redux/product-filter/selectors";
@@ -24,7 +24,7 @@ export const CardsOfProducts: FC<Props> = () => {
   const [arr, setArr] = useState(products);
 
   const search = useSelector(searchProducts);
-  const notFoundProducts = useSelector(selectNotFound);
+  const isFoundProducts = useSelector(selectIsFound);
   const manufactureProducts = useSelector(manufactureFilter);
   const brandFilters = useSelector(brandFilter);
   const [countProductsOnPage, setCountProductsOnPage] = useState(0);
@@ -32,12 +32,12 @@ export const CardsOfProducts: FC<Props> = () => {
   const allFilteredProducts = useSelector(selectFilteredProducts);
   useEffect(() => {
     //условие при поиске продуктов
-    if (search.length !== 0 && notFoundProducts === false) {
+    if (search.length !== 0 && isFoundProducts === true) {
       put(filteredProducts(search));
-    } else if (search.length === 0 && notFoundProducts === true) {
+    } else if (search.length === 0 && isFoundProducts === false) {
       put(filteredProducts([]));
     }
-  }, [search, notFoundProducts]);
+  }, [search, isFoundProducts]);
 
   useEffect(() => {
     let newArr: TProductCard[] = [];
@@ -109,6 +109,7 @@ export const CardsOfProducts: FC<Props> = () => {
       window.scrollTo(0, 0);
     }
   };
+  // const put(isFound(false));
   return (
     <div className={styles.container}>
       <div className={styles.render_cards}>
@@ -125,7 +126,7 @@ export const CardsOfProducts: FC<Props> = () => {
           })}
       </div>
       <div>
-        {notFoundProducts === true && (
+        {isFoundProducts === false && (
           <div className={styles.not_found_div}>
             <h2>ничего не найдено</h2>
             <button onClick={() => put(filteredProducts(products))}>
