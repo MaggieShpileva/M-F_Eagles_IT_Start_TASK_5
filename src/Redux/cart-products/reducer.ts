@@ -32,11 +32,14 @@ export const productCartReducer = (state = initialState, action: any) => {
           ...state.countProduct,
           [action.payload.barcode]: {
             product: action.payload.item,
-            count: action.payload.count,
+            count:
+              (state.countProduct[action.payload.barcode]?.count || 0) +
+              action.payload.count,
           },
         },
       };
-
+    // case BASKET_PRODUCTS.CLEAR_STORE:
+    //   return initialState;
     default:
       return state;
   }

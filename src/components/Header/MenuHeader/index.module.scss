@@ -2,6 +2,7 @@
 @import "../../../styles/colors.scss";
 
 .main_row_menu {
+  height: 107px;
   margin: 0 auto;
   border-top: 1px solid rgb(63, 78, 101, 0.2);
   border-bottom: 1px solid rgb(63, 78, 101, 0.2);
@@ -13,6 +14,7 @@
     align-items: center;
     height: 96px;
     flex-direction: row;
+    margin-top: 5px;
     @include mobile_320 {
       width: 290px;
       display: grid;
@@ -51,6 +53,8 @@
 
     .logo {
       cursor: pointer;
+      margin-left: 2px;
+
       @include mobile_320 {
         grid-area: logo;
         grid-row-start: 1;

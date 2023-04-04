@@ -13,17 +13,16 @@ import { allProducts } from "../../Redux/all-product/actions";
 
 export const Products: FC = () => {
   return (
-    <>
+    <div className={styles.products}>
       <PageTitle title={"Косметика и гигиена"} />
       <div className={styles.container}>
         <SortProduct />
-
         <TypeProduct />
         <div className={styles.basic_contant}>
           <Filters />
           <CardsOfProducts />
         </div>
       </div>
-    </>
+    </div>
   );
 };

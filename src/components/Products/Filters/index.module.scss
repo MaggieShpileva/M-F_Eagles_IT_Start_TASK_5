@@ -2,7 +2,13 @@
 @import "../../../styles//colors.scss";
 
 .container {
-  width: 420px;
+  width: 340px;
+  margin-top: 42px;
+  margin-left: 2px;
+
+  @include mobile_320 {
+    display: none;
+  }
   .title {
     @include font-regular-for-title-card;
     text-align: left;

@@ -1,18 +1,34 @@
 @import "../../styles/colors.scss";
 @import "../../styles/mixins.scss";
-
-.container {
-  @include container;
-
-  .breadcrumbs {
+.page_title {
+  width: 1920px;
+  @include mobile_320 {
+    width: 320px;
   }
-  .title_of_page {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .title {
-      h1 {
-        @include font-h1-light-bold-title;
+
+  .container {
+    @include container;
+    height: 48px;
+    margin-top: 48px;
+
+    @include mobile_320 {
+      width: 290px;
+    }
+    .title_of_page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 3px;
+
+      .title {
+        h1 {
+          @include font-h1-light-bold-title;
+          margin: 0;
+          @include mobile_320 {
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
       }
     }
   }

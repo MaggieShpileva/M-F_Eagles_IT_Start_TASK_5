@@ -68,8 +68,6 @@ export const SelectManufacturer: FC = () => {
       setCount(res.length);
       setIsOpen(true);
     }
-
-    // setCount(4);
   };
   return (
     <div className={styles.container}>

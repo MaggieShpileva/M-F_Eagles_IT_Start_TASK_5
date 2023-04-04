@@ -3,6 +3,13 @@
 
 .divs_with_sort {
   display: flex;
+  margin-top: 3px;
+  margin-left: 5px;
+
+  @include mobile_320 {
+    display: none;
+  }
+
   .button_with_type {
     width: 100px;
     height: 70px;
@@ -12,6 +19,7 @@
     background-color: transparent;
     border: 0;
     border-radius: 10px;
+    margin-right: 11px;
     @include font-p-regular-400;
   }
 }

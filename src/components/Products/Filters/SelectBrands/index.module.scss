@@ -3,13 +3,17 @@
 
 .container {
   width: 620px;
+  margin-top: 42px;
   .title {
     @include font-regular-for-title-card;
     text-align: left;
+    margin: 0;
   }
 
   .search {
     text-align: left;
+    margin-top: 17px;
+    margin-bottom: 11px;
     @include mobile_320 {
       width: 140px;
       margin-left: 0;
@@ -82,7 +86,37 @@
     align-items: flex-start;
     .checkbox_div {
       display: flex;
+      margin: 4px -3px;
       align-items: center;
+    }
+  }
+  .show_all_no_active,
+  .show_all_active {
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    margin-top: 10px;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      content: "";
+      right: -10px;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      background-image: url("../../../../images/icons/triangle.svg");
+    }
+  }
+
+  .show_all_active {
+    &::after {
+      transform: rotate(0deg);
+    }
+  }
+
+  .show_all_no_active {
+    &::after {
+      transform: rotate(180deg);
     }
   }
 }

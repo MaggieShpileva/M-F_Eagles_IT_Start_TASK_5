@@ -1,22 +1,32 @@
 @import "../../styles/mixins.scss";
 @import "../../styles//colors.scss";
-.container {
-  @include container;
 
-  .title_of_page {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .title {
-      h1 {
-        @include font-h1-light-bold-title;
+.products {
+  width: 1920px;
+  @include mobile_320 {
+    width: 320px;
+  }
+  .container {
+    @include container;
+
+    @include mobile_320 {
+      width: 290px;
+    }
+    .title_of_page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .title {
+        h1 {
+          @include font-h1-light-bold-title;
+        }
       }
     }
-  }
 
-  .basic_contant {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    .basic_contant {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 }

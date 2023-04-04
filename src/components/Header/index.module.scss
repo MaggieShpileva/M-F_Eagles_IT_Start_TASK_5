@@ -12,7 +12,8 @@ p {
   margin: 0;
 }
 .header {
-  @include container;
-  
-  
+  width: 1920px;
+  @include mobile_320 {
+    width: 320px;
+  }
 }

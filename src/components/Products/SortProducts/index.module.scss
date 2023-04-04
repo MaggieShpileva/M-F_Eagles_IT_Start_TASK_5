@@ -6,6 +6,12 @@
   top: -50px;
   right: -1100px;
   width: 320px;
+
+  @include mobile_320 {
+    display: block;
+    left: 0;
+    top: 20px;
+  }
   .sort {
     display: flex;
     flex-direction: row;

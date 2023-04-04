@@ -35,10 +35,12 @@ export const BreadCrumbs = () => {
     });
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.breadcrumbs}>
-        <p>Главная</p>
-        <div>{renderBreadCrumbs()}</div>
+    <div className={styles.bread_crumbs}>
+      <div className={styles.container}>
+        <div className={styles.breadcrumbs}>
+          <p>Главная</p>
+          <div>{renderBreadCrumbs()}</div>
+        </div>
       </div>
     </div>
   );
