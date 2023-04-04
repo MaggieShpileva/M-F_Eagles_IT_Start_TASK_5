@@ -49,7 +49,7 @@ export const CartProduct: FC<Props> = ({ item, index }) => {
         <p className={styles.value}>{item.brand}</p>
       </div>
       <div className={styles.price_and_basket}>
-        <p className={styles.price}>{item.price}</p>
+        <p className={styles.price}>{item.price} ₸</p>
         <button className={styles.basket} onClick={() => handleClickCart()}>
           В КОРЗИНУ
         </button>
