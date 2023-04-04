@@ -38,8 +38,8 @@ export const productCartReducer = (state = initialState, action: any) => {
           },
         },
       };
-    // case BASKET_PRODUCTS.CLEAR_STORE:
-    //   return initialState;
+    case BASKET_PRODUCTS.CLEAR_STORE:
+      return initialState;
     default:
       return state;
   }

@@ -48,9 +48,11 @@ export const CartPage: FC = () => {
     <div>
       <Header />
       <BreadCrumbs />
-      <div className={styles.container}>
-        <PageTitle title={"Корзина"} />
-        <div className={styles.cart_products}>{renderProductCart()}</div>
+      <PageTitle title={"Корзина"} />
+      <div className={styles.cart}>
+        <div className={styles.container}>
+          <div className={styles.cart_products}>{renderProductCart()}</div>
+        </div>
       </div>
       <Total total={total} isModal={isModal} setIsModal={setIsModal} />
       <Footer />

@@ -15,17 +15,27 @@ type Props = {
 export const Cart: FC<Props> = (props) => {
   const selectProducts = useSelector(selectCount);
   const put = useDispatch();
-  const handleClickMinus = () => {
-    // put(countCart(count));
-  };
-  // const handleClickPlus = () => {
-  //   setCount(count + 1);
-  //   // put(countCart(count));
-  // };
+  const [count, setCount] = useState(1);
+  const productsCart = useSelector(selectCount);
 
-  // useEffect(() => {
-  //   put(countCart(count));
-  // }, [count]);
+  useEffect(() => {
+    setCount(productsCart[props.cardBasket.barcode].count);
+  }, []);
+  const handleClickMinus = () => {
+    if (count > 1) {
+      setCount(count - 1);
+      put(countProductsCart(props.cardBasket.barcode, props.cardBasket, -1));
+    }
+    count > 1 ? setCount(count - 1) : setCount(1);
+  };
+  const handleClickPlus = () => {
+    put(countProductsCart(props.cardBasket.barcode, props.cardBasket, 1));
+  };
+
+  useEffect(() => {
+    // put(countProductsCart(props.cardBasket.barcode, props.cardBasket, count));
+    console.log(count);
+  }, [count]);
   return (
     <div>
       <div className={styles.product}>
@@ -50,10 +60,10 @@ export const Cart: FC<Props> = (props) => {
           >
             -
           </button>
-          <p className={styles.count}>{props.count}</p>
+          <p className={styles.count}>{count}</p>
           <button
             className={styles.count_button}
-            // onClick={() => handleClickPlus()}
+            onClick={() => handleClickPlus()}
           >
             +
           </button>
