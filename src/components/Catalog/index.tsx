@@ -10,7 +10,7 @@ import styles from "./index.module.scss";
 
 export const Catalog: FC = () => {
   return (
-    <div>
+    <div data-testid="catalog-page">
       <Header />
       <BreadCrumbs />
       <Products />

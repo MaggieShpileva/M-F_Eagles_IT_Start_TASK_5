@@ -36,8 +36,6 @@ describe("Testing input price", () => {
     });
     render(<Price />);
 
-    // fireEvent.change(await inputStartValue, { target: { value: 10 } });
-    // fireEvent.change(await inputEndValue, { target: { value: -300 } });
     waitFor(() => {
       expect(inputStartValue).toHaveValue(arr[0].price);
       expect(inputEndValue).toHaveValue(arr[Attr.length - 1].price);

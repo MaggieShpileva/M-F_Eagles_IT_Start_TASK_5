@@ -1,0 +1,16 @@
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+
+.ShowButton {
+  width: 60px;
+  height: 60px;
+  .show_button {
+    @include yellow-button;
+    width: 169px;
+    height: 59px;
+    border-radius: 79px;
+    position: relative;
+    padding: 21px 51px;
+    box-sizing: border-box;
+  }
+}

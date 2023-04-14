@@ -45,7 +45,7 @@ export const ProductPage: FC = () => {
     }
   };
   return (
-    <>
+    <div data-testid="product-page">
       <Header />
       <BreadCrumbs />
       <div className={styles.container}>
@@ -89,6 +89,6 @@ export const ProductPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };

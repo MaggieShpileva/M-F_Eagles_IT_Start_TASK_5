@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681164885529" clover="3.2.0">
-  <project timestamp="1681164885529" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1681502657565" clover="3.2.0">
+  <project timestamp="1681502657565" name="All files">
+    <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="6" coveredelements="0" complexity="0" loc="6" ncloc="6" packages="7" files="8" classes="8"/>
+    <package name="src">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="react-app-env.d.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/react-app-env.d.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="setupTests.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/setupTests.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Redux">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="reducers.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/Redux/reducers.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Redux.ProductPage">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="action-types.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/Redux/ProductPage/action-types.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Redux.all-product">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="action-types.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/Redux/all-product/action-types.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Redux.cart-products">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="action-types.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/Redux/cart-products/action-types.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Redux.product-filter">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="action-types.ts" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/Redux/product-filter/action-types.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.data">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="JSON.js" path="/Users/maggie/Documents/GitHub/M-F_Eagles_IT_Start_TASK_5/src/data/JSON.js">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="228" count="0" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

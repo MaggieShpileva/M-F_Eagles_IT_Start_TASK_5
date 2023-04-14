@@ -13,4 +13,11 @@
     @include font-regular-for-title-card;
     text-align: left;
   }
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 238px;
+    margin: 25px 0;
+  }
 }

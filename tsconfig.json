@@ -19,5 +19,14 @@
     "declaration": true
     // Ensure that Babel can safely transpile files in the TypeScript project
   },
-  "include": ["src", "tests"]
+  "include": ["src", "tests"],
+  "exclude": [
+    "node_modules",
+    "src//*.spec.ts",
+    "<rootDir>//*.test.ts",
+    "src//*.test.ts",
+    "src//*.spec.tsx",
+    "<rootDir>//*.test.tsx",
+    "src//*.test.tsx"
+  ]
 }

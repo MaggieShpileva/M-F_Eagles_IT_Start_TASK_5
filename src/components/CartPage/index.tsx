@@ -45,7 +45,7 @@ export const CartPage: FC = () => {
   };
 
   return (
-    <div>
+    <div data-testid="cart-page">
       <Header />
       <BreadCrumbs />
       <PageTitle title={"Корзина"} />

@@ -1,2 +1,26 @@
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixins.scss";
+
+.DeleteButton {
+  width: 60px;
+  height: 60px;
+  .delete_button {
+    @include yellow-button;
+    width: 59px;
+    height: 59px;
+    border-radius: 79px;
+    position: relative;
+    padding: 17px;
+    box-sizing: border-box;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 25px;
+      height: 25px;
+      top: 17px;
+      left: 17px;
+      background-image: url("../../../../images/icons/fluent_delete-16-filled.svg");
+      background-size: cover;
+    }
+  }
+}

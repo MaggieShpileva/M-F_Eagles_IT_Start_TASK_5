@@ -14,14 +14,21 @@ import {
 import { selectFilteredProducts } from "../../../../Redux/product-filter/selectors";
 import { TProductCard } from "../../../../types/index";
 import styles from "./index.module.scss";
-
-export const SelectBrands: FC = () => {
+type Props = {
+  isDeleteClick: boolean;
+  setIsDeleteClick: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export const SelectBrands: FC<Props> = ({
+  isDeleteClick,
+  setIsDeleteClick,
+}) => {
   const products = useSelector(selectFilteredProducts);
   const [filterArr, setFilterArr] = useState<TProductCard[]>([]);
   const put = useDispatch();
   const [listBrands, setListBrands] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [count, setCount] = useState(4);
+  const [isCheckedList, setIsCheckedList] = useState<boolean[]>([]);
 
   const resultArr = products.map((item: any) => {
     return item.brand;
@@ -29,6 +36,12 @@ export const SelectBrands: FC = () => {
 
   //сортировка производителей
   const res = Array.from(new Set(resultArr));
+
+  useEffect(() => {
+    if (isDeleteClick) {
+      setIsCheckedList(isCheckedList.map(() => !isDeleteClick));
+    }
+  }, [isDeleteClick]);
 
   //запись всех производителей
   const renderBrands = () => {
@@ -38,7 +51,8 @@ export const SelectBrands: FC = () => {
         <div className={styles.checkbox_div} key={`${index}-${item}`}>
           <input
             type="checkbox"
-            onChange={(event) => handleChangeBrand(event, item)}
+            checked={isCheckedList[index]}
+            onChange={(event) => handleChangeBrand(event, index, item)}
           />
           <p>{item}</p>
         </div>
@@ -48,8 +62,14 @@ export const SelectBrands: FC = () => {
 
   const handleChangeBrand = (
     event: React.ChangeEvent<HTMLInputElement>,
+    index: number,
     item?: string
   ) => {
+    const newList = [...isCheckedList];
+    newList[index] = !newList[index];
+    setIsCheckedList(newList);
+    setIsDeleteClick(newList.every((isDeleteClick) => isDeleteClick));
+
     let result = [];
     if (event.target.checked == true && item != undefined) {
       result.push(item);
@@ -63,10 +83,10 @@ export const SelectBrands: FC = () => {
     }
   };
 
-  useEffect(() => {
-    const res = Array.from(new Set(listBrands));
-    put(putBrandFilter(res));
-  }, [listBrands]);
+  // useEffect(() => {
+  //   const res = Array.from(new Set(listBrands));
+  //   put(putBrandFilter(res));
+  // }, [listBrands]);
 
   const handleClick = () => {
     if (isOpen) {
@@ -77,7 +97,6 @@ export const SelectBrands: FC = () => {
       setIsOpen(true);
     }
   };
-  console.log(count);
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Бренд</h1>

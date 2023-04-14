@@ -1,5 +1,3 @@
-// import module
-
 const store = {
   products: [
     {
