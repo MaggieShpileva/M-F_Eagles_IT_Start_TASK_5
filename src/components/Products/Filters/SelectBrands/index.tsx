@@ -12,6 +12,7 @@ import {
   putManufactureFilter,
 } from "../../../../Redux/product-filter/actions";
 import { selectFilteredProducts } from "../../../../Redux/product-filter/selectors";
+import { store } from "../../../../Redux/store";
 import { TProductCard } from "../../../../types/index";
 import styles from "./index.module.scss";
 type Props = {
@@ -22,7 +23,7 @@ export const SelectBrands: FC<Props> = ({
   isDeleteClick,
   setIsDeleteClick,
 }) => {
-  const products = useSelector(selectFilteredProducts);
+  const products = useSelector(selectAllProducts);
   const [filterArr, setFilterArr] = useState<TProductCard[]>([]);
   const put = useDispatch();
   const [listBrands, setListBrands] = useState<string[]>([]);
@@ -40,6 +41,7 @@ export const SelectBrands: FC<Props> = ({
   useEffect(() => {
     if (isDeleteClick) {
       setIsCheckedList(isCheckedList.map(() => !isDeleteClick));
+      setListBrands([]);
     }
   }, [isDeleteClick]);
 
@@ -51,7 +53,7 @@ export const SelectBrands: FC<Props> = ({
         <div className={styles.checkbox_div} key={`${index}-${item}`}>
           <input
             type="checkbox"
-            checked={isCheckedList[index]}
+            checked={isCheckedList[index] || false}
             onChange={(event) => handleChangeBrand(event, index, item)}
           />
           <p>{item}</p>
@@ -68,7 +70,7 @@ export const SelectBrands: FC<Props> = ({
     const newList = [...isCheckedList];
     newList[index] = !newList[index];
     setIsCheckedList(newList);
-    setIsDeleteClick(newList.every((isDeleteClick) => isDeleteClick));
+    setIsDeleteClick(false);
 
     let result = [];
     if (event.target.checked == true && item != undefined) {
@@ -83,10 +85,9 @@ export const SelectBrands: FC<Props> = ({
     }
   };
 
-  // useEffect(() => {
-  //   const res = Array.from(new Set(listBrands));
-  //   put(putBrandFilter(res));
-  // }, [listBrands]);
+  useEffect(() => {
+    put(putBrandFilter(listBrands));
+  }, [listBrands]);
 
   const handleClick = () => {
     if (isOpen) {

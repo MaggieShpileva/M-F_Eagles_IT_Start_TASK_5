@@ -8,14 +8,24 @@ import React, {
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllProducts } from "../../../../Redux/all-product/selectors";
 import { putManufactureFilter } from "../../../../Redux/product-filter/actions";
+import { store } from "../../../../Redux/store";
 import styles from "./index.module.scss";
 
-export const SelectManufacturer: FC = () => {
+type Props = {
+  isDeleteClick: boolean;
+  setIsDeleteClick: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const SelectManufacturer: FC<Props> = ({
+  isDeleteClick,
+  setIsDeleteClick,
+}) => {
   const products = useSelector(selectAllProducts);
   const put = useDispatch();
   const [listManufactures, setListManufactures] = useState<string[]>([]);
   const [count, setCount] = useState(4);
   const [isOpen, setIsOpen] = useState(false);
+  const [isCheckedList, setIsCheckedList] = useState<boolean[]>([]);
 
   const resultArr = products.map((item: any) => {
     return item.manufacturer;
@@ -23,6 +33,12 @@ export const SelectManufacturer: FC = () => {
 
   //сортировка производителей
   const res = Array.from(new Set(resultArr));
+  useEffect(() => {
+    if (isDeleteClick) {
+      setIsCheckedList(isCheckedList.map(() => false));
+    }
+  }, [isDeleteClick]);
+
   //запись всех производителей
   const renderManufactures = () => {
     //отрисовка чекбоксов с производителями
@@ -31,7 +47,8 @@ export const SelectManufacturer: FC = () => {
         <div className={styles.checkbox_div} key={`${index}-${item}`}>
           <input
             type="checkbox"
-            onChange={(event) => handleChangeManufacture(event, item)}
+            checked={isCheckedList[index] || false}
+            onChange={(event) => handleChangeManufacture(event, index, item)}
           />
           <p>{item}</p>
         </div>
@@ -40,24 +57,29 @@ export const SelectManufacturer: FC = () => {
   };
   const handleChangeManufacture = (
     event: React.ChangeEvent<HTMLInputElement>,
+    index: number,
     item?: string
   ) => {
+    const newList = [...isCheckedList];
+    newList[index] = !newList[index];
+    setIsCheckedList(newList);
+    setIsDeleteClick(false);
+
     let result = [];
-    if (event.target.checked == true && item != undefined) {
+    if (event.target.checked === true && item != undefined) {
       result.push(item);
       setListManufactures((prevArr) => [...prevArr, item]);
     } else {
       setListManufactures(
         listManufactures.filter((key) => {
-          return key != item;
+          return key !== item;
         })
       );
     }
   };
 
   useEffect(() => {
-    const res = Array.from(new Set(listManufactures));
-    put(putManufactureFilter(res));
+    put(putManufactureFilter(listManufactures));
   }, [listManufactures]);
 
   const handleClick = () => {

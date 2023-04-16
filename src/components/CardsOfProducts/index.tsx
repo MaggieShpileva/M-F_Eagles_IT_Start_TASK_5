@@ -39,37 +39,6 @@ export const CardsOfProducts: FC<Props> = () => {
     }
   }, [search, isFoundProducts]);
 
-  useEffect(() => {
-    let newArr: TProductCard[] = [];
-
-    manufactureProducts.map((filter) => {
-      products.forEach((product) => {
-        if (filter === product.manufacturer) {
-          newArr.push(product);
-        }
-      });
-    });
-
-    manufactureProducts.length
-      ? put(filteredProducts(newArr))
-      : put(filteredProducts(products));
-  }, [manufactureProducts]);
-
-  useEffect(() => {
-    let newArr: TProductCard[] = [];
-    brandFilters.map((filter) => {
-      products.forEach((product) => {
-        if (filter === product.brand) {
-          newArr.push(product);
-        }
-      });
-    });
-
-    brandFilters.length
-      ? put(filteredProducts(newArr))
-      : put(filteredProducts(products));
-  }, [brandFilters]);
-
   const renderButton = () => {
     let a = Math.ceil(allFilteredProducts.length / 10);
     const arr = [...Array(a)];

@@ -37,6 +37,7 @@
     @include font-regular-for-title-card;
     text-align: left;
     margin-bottom: 20px;
+    cursor: pointer;
   }
   .description {
     text-align: left;
@@ -62,7 +63,7 @@
       @include font-bold-for-card;
       margin-right: 40px;
     }
-    .basket {
+    .button_cart {
       @include yellow-button;
       width: 153px;
       height: 45px;
@@ -71,6 +72,7 @@
       position: relative;
       font-size: 10px;
       font-weight: 700;
+      cursor: pointer;
       &:after {
         position: absolute;
         content: "";

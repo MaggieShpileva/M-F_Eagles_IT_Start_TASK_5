@@ -4,6 +4,7 @@
 .DeleteButton {
   width: 60px;
   height: 60px;
+
   .delete_button {
     @include yellow-button;
     width: 59px;
@@ -12,6 +13,8 @@
     position: relative;
     padding: 17px;
     box-sizing: border-box;
+    cursor: pointer;
+
     &::after {
       position: absolute;
       content: "";

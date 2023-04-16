@@ -20,7 +20,10 @@ export const Filters: FC = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>ПОДБОР ПО ПАРАМЕТРАМ</h1>
       <Price />
-      <SelectManufacturer />
+      <SelectManufacturer
+        isDeleteClick={isDeleteClick}
+        setIsDeleteClick={setIsDeleteClick}
+      />
       <SelectBrands
         isDeleteClick={isDeleteClick}
         setIsDeleteClick={setIsDeleteClick}
