@@ -12,10 +12,14 @@ import { Contacts } from "./Contacts";
 import { Search } from "./Search";
 import { store } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
-
-export const MenuHeader: FC = () => {
+type Props = {
+  isOpenMobileInfo: boolean;
+  setIsOpenMobileInfo: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export const MenuHeader: FC<Props> = (props) => {
   const navigate = useNavigate();
   const countProducts = useSelector(selectCount);
+
   let count = 0;
   let total = 0;
   const selectProducts = useSelector(selectCount);
@@ -24,10 +28,20 @@ export const MenuHeader: FC = () => {
     count += countProducts[item].count;
     total += countProducts[item].product.price * count;
   }
+
   return (
     <div className={styles.main_row_menu}>
       <div className={styles.container}>
-        <div className={styles.burger_menu_mobile}> </div>
+        <div
+          className={
+            props.isOpenMobileInfo
+              ? styles.burger_menu_mobile_is_open
+              : styles.burger_menu_mobile_is_close
+          }
+          onClick={() => props.setIsOpenMobileInfo(!props.isOpenMobileInfo)}
+        >
+          {" "}
+        </div>
         <div className={styles.logo} onClick={() => navigate("/")}>
           <img src={logo} alt="" />
         </div>

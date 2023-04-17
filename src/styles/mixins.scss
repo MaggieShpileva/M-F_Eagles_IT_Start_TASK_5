@@ -17,13 +17,12 @@
   color: #ffffff;
 }
 
-@mixin font-h1-mobile-white {
+@mixin font-h1-mobile {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
-  color: #ffffff;
 }
 @mixin font-h2-white {
   font-family: "Inter";
@@ -194,6 +193,13 @@
   @media screen and (max-width: 320px) {
     @content;
   }
+}
+
+@mixin mobile_container {
+  width: 290px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin: auto;
 }
 
 @mixin mobile-button {

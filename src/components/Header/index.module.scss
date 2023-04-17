@@ -15,5 +15,7 @@ p {
   width: 1920px;
   @include mobile_320 {
     width: 320px;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

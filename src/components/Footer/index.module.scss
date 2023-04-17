@@ -115,8 +115,9 @@
         margin-right: 0px;
       }
       h1 {
-        @include font-h1-mobile-white;
+        @include font-h1-mobile;
         text-align: left;
+        color: #ffffff;
       }
 
       p {
@@ -220,7 +221,8 @@
           display: none;
         }
         h1 {
-          @include font-h1-mobile-white;
+          @include font-h1-mobile;
+          color: #ffffff;
         }
         .price_list_button {
           @include yellow-button;

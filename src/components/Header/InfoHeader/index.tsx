@@ -1,46 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./index.module.scss";
-import LocationIcon from "../../../images/icons/location_icon.png";
 import phoneIcon from "../../../images/icons/cil_phone.png";
-import MailIcon from "../../../images/icons/mail_icon.png";
+import { AddressCompany } from "../AddressCompany";
+import { MailCompany } from "../MailCompany";
+import { SalesDepartment } from "../SalesDepartment";
+import { RequestCall } from "../RequestCall";
+import { SiteMenu } from "../SiteMenu";
 
-export const InfoHeader: FC = () => {
+type Props = {
+  isOpenMobileInfo: boolean;
+  setIsOpenMobileInfo: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const InfoHeader: FC<Props> = (props) => {
   return (
-    <div className={styles.top_row_menu}>
-      <div className={styles.container}>
-        <div className={styles.data_company}>
-          <div className={styles.adress}>
-            <img src={LocationIcon} alt="" />
-            <div className={styles.info}>
-              <h3>г. Кокчетав, ул. Ж. Ташенова 129Б </h3>
-              <span>(Рынок Восточный)</span>
-            </div>
-          </div>
-          <div className={styles.mail}>
-            <img src={MailIcon} alt="" />
-            <div className={styles.info}>
-              <h3>opt.sultan@mail.ru </h3>
-              <span>На связи в любое время</span>
-            </div>
-          </div>
-          <div className={styles.sales_department}>
-            <img src={phoneIcon} alt="" />
-            <div className={styles.info}>
-              <h3>Отдел продаж</h3>
-              <span>+7 (777) 490-00-91</span>
-            </div>
-          </div>
-          <div className={styles.request_a_call}>
-            <button className={styles.call_button}></button>
-            <a href="">Заказать звонок</a>
-          </div>
-        </div>
-        <div className={styles.links_to_pages}>
-          <a href="">О компании</a>
-          <a href="">Доставка и оплата</a>
-          <a href="">Возврат</a>
-          <a href="">Контакты</a>
-        </div>
+    <div className={props.isOpenMobileInfo ? styles.mobile_modal : ""}>
+      <div
+        className={
+          props.isOpenMobileInfo
+            ? styles.mobile_modal_window
+            : styles.top_row_menu
+        }
+      >
+        <AddressCompany />
+        <MailCompany />
+        <SalesDepartment />
+        <RequestCall />
+        <SiteMenu />
       </div>
     </div>
   );

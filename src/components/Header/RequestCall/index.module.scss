@@ -1,0 +1,32 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+
+.request_a_call {
+  display: none;
+  @include mobile_320 {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    .call_button {
+      @include yellow-button;
+      width: 30px;
+      height: 30px;
+      margin-right: 7px;
+      position: relative;
+      &:after {
+        position: absolute;
+        content: "";
+        width: 10px;
+        height: 10px;
+        top: 10px;
+        left: 10px;
+        background-image: url("../../../images/icons/phone-button-mobile.png");
+      }
+    }
+    a {
+      @include font-p-mobile;
+      color: #3f4e65;
+      margin-top: 5px;
+    }
+  }
+}

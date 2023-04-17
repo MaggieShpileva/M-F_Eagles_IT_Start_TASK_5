@@ -17,6 +17,7 @@
     margin-top: 5px;
     @include mobile_320 {
       width: 290px;
+      height: 102px;
       display: grid;
       grid-template-areas:
         "burger-menu logo basket"
@@ -25,7 +26,8 @@
       grid-template-rows: repeat(8, 1fr);
       grid-template-columns: repeat(8, 1fr);
     }
-    .burger_menu_mobile {
+    .burger_menu_mobile_is_close,
+    .burger_menu_mobile_is_open {
       display: none;
       @include mobile_320 {
         @include yellow-button;
@@ -45,9 +47,19 @@
           left: 10px;
           width: 12px;
           height: 12px;
-          background-image: url("../../../images/icons/burger-menu-mobile.png");
           background-size: cover;
         }
+      }
+    }
+    .burger_menu_mobile_is_close {
+      &::after {
+        background-image: url("../../../images/icons/burger-menu-mobile.png");
+      }
+    }
+
+    .burger_menu_mobile_is_open {
+      &::after {
+        background-image: url("../../../images/icons/dashicons_menu-alt.svg");
       }
     }
 
@@ -200,12 +212,12 @@
           padding: 2px 6px;
           box-sizing: border-box;
           @include mobile_320 {
-            width: 17px;
+            min-width: 17px;
             height: 17px;
+            padding: 0px 4px;
             @include font-p-mobile;
             top: -2px;
             left: 15px;
-            padding: 0px;
           }
         }
       }

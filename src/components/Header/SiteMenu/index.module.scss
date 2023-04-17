@@ -1,0 +1,79 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/colors.scss";
+.links_to_pages {
+  width: 872px;
+  height: 29px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include mobile_320 {
+    height: 348px;
+    width: 290px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  .site_menu_title {
+    display: none;
+    @include mobile_320 {
+      display: block;
+      @include font-h1-mobile;
+      color: $base-grey;
+    }
+  }
+  a {
+    font-weight: 400;
+    font-size: 14px;
+    color: $base-grey;
+    text-decoration: none;
+    position: relative;
+    left: 3px;
+    margin-left: 60px;
+
+    @include mobile_320 {
+      margin: 20px 0;
+    }
+
+    &:not(:last-child)::after {
+      position: absolute;
+      content: "";
+      top: -6px;
+      right: -31px;
+      height: 29px;
+      width: 0px;
+      opacity: 0.05;
+      border: 1px dashed #000000;
+
+      @include mobile_320 {
+        height: 0;
+        width: 0;
+      }
+    }
+  }
+
+  .mobile_button_price_list {
+    display: none;
+    @include mobile_320 {
+      display: block;
+      position: relative;
+      @include yellow-button;
+      width: 290px;
+      height: 70px;
+      padding: 26.5px 88.5px;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 17px;
+        width: 17px;
+        top: 26px;
+        right: 88.5px;
+        background-image: url("../../../images/icons/download_white.svg");
+      }
+    }
+  }
+}

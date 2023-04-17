@@ -3,10 +3,15 @@
 
 .top_row_menu {
   position: relative;
+  height: 61px;
+  padding: 14px 0 13px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @include container;
   @include mobile_320 {
-    position: absolute;
-    top: 90px;
+    display: none;
   }
   .container {
     @include container;
@@ -17,9 +22,6 @@
     padding: 14px 0 13px 0;
     box-sizing: border-box;
     @include mobile_320 {
-      width: 290px;
-      flex-direction: column;
-      display: none;
     }
 
     .data_company {
@@ -27,129 +29,25 @@
       flex-direction: row;
       margin-top: 8px;
       @include mobile_320 {
-        flex-direction: column;
-        border-bottom: 1px dashed rgb(63, 78, 101, 0.2);
-      }
-
-      .adress,
-      .mail,
-      .sales_department,
-      .request_a_call {
-        display: flex;
-        flex-direction: row;
-
-        img {
-          width: 20px;
-          height: 20px;
-          margin-right: 15px;
-          position: relative;
-          top: 6px;
-        }
-
-        .info {
-          text-align: left;
-          h3 {
-          }
-          span {
-            position: relative;
-            font-weight: 300;
-            font-size: 12px;
-            top: -3px;
-          }
-        }
-      }
-      .adress {
-        position: relative;
-        img {
-        }
-        @include screen {
-          &::after {
-            position: relative;
-            content: "";
-            top: -4px;
-            right: -23px;
-            height: 39px;
-            width: 0px;
-            opacity: 0.05;
-            border: 1px dashed #000000;
-          }
-        }
-      }
-      .mail {
-        margin-top: -0.5px;
-        margin-left: 42px;
-        @include mobile_320 {
-          margin-left: 0;
-        }
-        img {
-        }
-      }
-
-      .sales_department {
-        display: none;
-        @include mobile_320 {
-          margin-top: 5px;
-          display: flex;
-        }
-      }
-
-      .request_a_call {
-        display: none;
-        @include mobile_320 {
-          display: flex;
-          margin-top: 5px;
-          margin-bottom: 10px;
-          .call_button {
-            @include yellow-button;
-            width: 30px;
-            height: 30px;
-            margin-right: 7px;
-            position: relative;
-            &:after {
-              position: absolute;
-              content: "";
-              width: 10px;
-              height: 10px;
-              top: 10px;
-              left: 10px;
-              background-image: url("../../../images/icons/phone-button-mobile.png");
-            }
-          }
-          a {
-            @include font-p-mobile;
-            color: #3f4e65;
-            margin-top: 5px;
-          }
-        }
       }
     }
+  }
+}
+.mobile_modal {
+  @include mobile_320 {
+    background-color: rgb(17, 17, 17, 0.5);
+    height: 100vh;
+    width: 100%;
+    top: 108px;
+    position: absolute;
 
-    .links_to_pages {
-      width: 512px;
-      height: 29px;
-      padding: 4px 0;
+    .mobile_modal_window {
+      width: 320px;
+      background: $base-white;
+      z-index: 9999;
+      position: relative;
+      padding: 20px 15px;
       box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      a {
-        font-weight: 400;
-        font-size: 14px;
-        color: #3f4e65;
-        text-decoration: none;
-        position: relative;
-        left: 3px;
-        &:not(:last-child)::after {
-          position: absolute;
-          content: "";
-          top: -6px;
-          right: -31px;
-          height: 29px;
-          width: 0px;
-          opacity: 0.05;
-          border: 1px dashed #000000;
-        }
-      }
     }
   }
 }

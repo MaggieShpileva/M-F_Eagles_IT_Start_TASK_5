@@ -5,10 +5,17 @@ import { InfoHeader } from "./InfoHeader";
 import { MenuHeader } from "./MenuHeader";
 
 export const Header: FC = () => {
+  const [isOpenMobileInfo, setIsOpenMobileInfo] = useState(false);
   return (
     <div className={styles.header}>
-      <InfoHeader />
-      <MenuHeader />
+      <InfoHeader
+        isOpenMobileInfo={isOpenMobileInfo}
+        setIsOpenMobileInfo={setIsOpenMobileInfo}
+      />
+      <MenuHeader
+        isOpenMobileInfo={isOpenMobileInfo}
+        setIsOpenMobileInfo={setIsOpenMobileInfo}
+      />
     </div>
   );
 };
